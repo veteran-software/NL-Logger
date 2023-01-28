@@ -11,13 +11,15 @@ import (
 
 //goland:noinspection GoUnnecessarilyExportedIdentifiers,GoUnusedConst
 const (
-	LogPrefixCommand     = "[COMMAND  ]"
-	LogPrefixCron        = "[CRON     ]"
-	LogPrefixDatabase    = "[DATABASE ]"
-	LogPrefixDiscord     = "[DISCORD  ]"
-	LogPrefixTrovo       = "[TROVO    ]"
-	LogPrefixTwitch      = "[TWITCH   ]"
-	LogPrefixYouTubeLive = "[YOUTUBE-L]"
+	Command     = "[COMMAND  ]"
+	Cron        = "[CRON     ]"
+	Database    = "[DATABASE ]"
+	Discord     = "[DISCORD  ]"
+	Picarto     = "[PICARTO  ]"
+	Trovo       = "[TROVO    ]"
+	Twitch      = "[TWITCH   ]"
+	YouTubeLive = "[YOUTUBE-L]"
+	YouTubePub  = "[YOUTUBE-P]"
 )
 
 var (
