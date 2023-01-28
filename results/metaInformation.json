@@ -1,0 +1,18 @@
+{
+  "total": 0,
+  "tools inspection": {
+    "Code Inspection": 0
+  },
+  "attributes": {
+    "vcs": {
+      "sarifIdea": {
+        "repositoryUri": "ssh://git@github.com/veteran-software/nl-logger.git",
+        "revisionId": "04a3b95f69a08dda5dcc34d7f9a5877e3d99b02d",
+        "branch": "refs/heads/main"
+      }
+    },
+    "deviceId": "200820300000000-b058-dfb5-f246-b5550a691521",
+    "jobUrl": "https://github.com/veteran-software/nl-logger/actions/runs/4033158797",
+    "repoUrl": "https://github.com/veteran-software/nl-logger"
+  }
+}
