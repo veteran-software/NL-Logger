@@ -6,13 +6,13 @@
   "attributes": {
     "vcs": {
       "sarifIdea": {
-        "repositoryUri": "ssh://git@github.com/veteran-software/nl-logger.git",
-        "revisionId": "1a0950743b138b4cd5de85c63e72a3ebafd70224",
+        "repositoryUri": "ssh://git@github.com/veteran-software/nowlive-logging.git",
+        "revisionId": "bddaae1d403aeb8e42753f9136ea77eb322b786d",
         "branch": "refs/heads/main"
       }
     },
-    "deviceId": "200820300000000-b058-dfb5-f246-b5550a691521",
-    "jobUrl": "https://github.com/veteran-software/nl-logger/actions/runs/4033221789",
-    "repoUrl": "https://github.com/veteran-software/nl-logger"
+    "deviceId": "200820300000000-6020-707b-7d2c-e4824c0e26f8",
+    "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4033258682",
+    "repoUrl": "https://github.com/veteran-software/nowlive-logging"
   }
 }
