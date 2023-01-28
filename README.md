@@ -15,4 +15,4 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=veteran-software_nl-logger&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=veteran-software_nl-logger)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=veteran-software_nl-logger&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=veteran-software_nl-logger)
 
-[![Qodana](https://github.com/veteran-software/nl-logger/actions/workflows/code_quality.yml/badge.svg?branch=main)](https://github.com/veteran-software/nl-logger/actions/workflows/code_quality.yml)
+[![Qodana](https://github.com/veteran-software/nl-logger/actions/workflows/code_quality.yml/badge.svg)](https://github.com/veteran-software/nl-logger/actions/workflows/code_quality.yml)
