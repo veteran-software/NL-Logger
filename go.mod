@@ -1,4 +1,4 @@
-module github.com/veteran-software/nl-logger
+module github.com/veteran-software/nowlive-logging
 
 go 1.19
 
