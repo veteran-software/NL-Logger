@@ -2703,6 +2703,37 @@
                 ]
               },
               {
+                "id": "GoUnusedConst",
+                "shortDescription": {
+                  "text": "Unused constant"
+                },
+                "fullDescription": {
+                  "text": "Reports constants that are defined but are never used in code. 'func main() {\n const i = 100\n}' Unlike unused variables and imports, this code will compile. Unused constants might increase your code base and slow down program compilation. To delete the unused constant, consider using the Delete constant quick-fix.",
+                  "markdown": "Reports constants that are defined but are never used in code.\n\n    func main() {\n     const i = 100\n    }\n\nUnlike unused variables and imports, this code will compile. Unused constants might increase your code base and\nslow down program compilation. To delete the unused constant, consider using the **Delete constant** quick-fix."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Declaration redundancy",
+                      "index": 4,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
                 "id": "GoUnusedFunction",
                 "shortDescription": {
                   "text": "Unused function"
@@ -2734,13 +2765,13 @@
                 ]
               },
               {
-                "id": "GoUnusedConst",
+                "id": "GoEmptyDeclaration",
                 "shortDescription": {
-                  "text": "Unused constant"
+                  "text": "Empty declaration"
                 },
                 "fullDescription": {
-                  "text": "Reports constants that are defined but are never used in code. 'func main() {\n const i = 100\n}' Unlike unused variables and imports, this code will compile. Unused constants might increase your code base and slow down program compilation. To delete the unused constant, consider using the Delete constant quick-fix.",
-                  "markdown": "Reports constants that are defined but are never used in code.\n\n    func main() {\n     const i = 100\n    }\n\nUnlike unused variables and imports, this code will compile. Unused constants might increase your code base and\nslow down program compilation. To delete the unused constant, consider using the **Delete constant** quick-fix."
+                  "text": "Reports empty declarations. Empty declarations have no effect. If you remove them, you might improve code readability. Example: 'func main() {\n const () // empty declaration\n}' You can apply the Delete empty declaration quick-fix to remove this declaration.",
+                  "markdown": "Reports empty declarations.\n\nEmpty declarations have no effect. If you remove them, you might improve code readability.\n\nExample:\n\n    func main() {\n     const () // empty declaration\n    }\n\nYou can apply the **Delete empty declaration** quick-fix to remove this declaration."
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -2785,37 +2816,6 @@
                     "target": {
                       "id": "Go/General",
                       "index": 2,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "GoEmptyDeclaration",
-                "shortDescription": {
-                  "text": "Empty declaration"
-                },
-                "fullDescription": {
-                  "text": "Reports empty declarations. Empty declarations have no effect. If you remove them, you might improve code readability. Example: 'func main() {\n const () // empty declaration\n}' You can apply the Delete empty declaration quick-fix to remove this declaration.",
-                  "markdown": "Reports empty declarations.\n\nEmpty declarations have no effect. If you remove them, you might improve code readability.\n\nExample:\n\n    func main() {\n     const () // empty declaration\n    }\n\nYou can apply the **Delete empty declaration** quick-fix to remove this declaration."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Declaration redundancy",
-                      "index": 4,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3323,6 +3323,37 @@
                 ]
               },
               {
+                "id": "GoLoopClosure",
+                "shortDescription": {
+                  "text": "Loop variables captured by the func literal"
+                },
+                "fullDescription": {
+                  "text": "Reports references to loop variables from within 'func' literals in 'defer' and 'go' statements. Such variables might have unexpected values because they are not copied to 'func' literals, and the 'func' literals in 'defer' and 'go' are not executed immediately. For more information about closures and goroutines, see What happens with closures running as goroutines? at golang.org. Example: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  go func() {\n    fmt.Println(v) // output will likely be `c c c`, not `a b c`\n  }()\n}' After the quick-fix is applied: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  v := v // `v` is copied now\n  go func() {\n    fmt.Println(v)\n  }()\n}' Note the analyzer only checks 'defer' and 'go' statements when they are the last statement in the loop body. Otherwise, the analysis might produce false detections.",
+                  "markdown": "Reports references to loop variables from within `func` literals in `defer` and `go` statements. Such variables might have unexpected values because they are not copied to `func` literals, and the `func` literals in `defer` and `go` are not executed immediately.\n\nFor more information about closures and goroutines, see [What happens\nwith closures running as goroutines? at golang.org](https://golang.org/doc/go_faq.html#closures_and_goroutines).\n\nExample:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      go func() {\n        fmt.Println(v) // output will likely be `c c c`, not `a b c`\n      }()\n    }\n\nAfter the quick-fix is applied:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      v := v // `v` is copied now\n      go func() {\n        fmt.Println(v)\n      }()\n    }\n\nNote the analyzer only checks `defer` and `go` statements when they are the last statement in the loop body.\nOtherwise, the analysis might produce false detections."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Probable bugs",
+                      "index": 3,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
                 "id": "GoAssignmentToReceiver",
                 "shortDescription": {
                   "text": "Assignment to a receiver"
@@ -3361,37 +3392,6 @@
                 "fullDescription": {
                   "text": "Reports assignment statements of the form 'x = atomic.AddUint64(&x, 1)'. Such operations are not atomic, and is a common misuse of the 'sync/atomic' API. To make them atomic, one need to remove the assignment to use a direct call: 'atomic.AddUint64(&x, 1)'. In that case, the value of 'x' will be updated atomically by address. Example: 'import (\n \"sync/atomic\"\n)\n\ntype Counter uint64\n\nfunc AtomicTests() {\n x := uint64(1)\n x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n}'",
                   "markdown": "Reports assignment statements of the form `x = atomic.AddUint64(&x, 1)`.\n\nSuch operations are not atomic,\nand is a common misuse of the `sync/atomic` API. To make them atomic, one need to remove the assignment\nto use a direct call: `atomic.AddUint64(&x, 1)`. In that case, the value of `x` will be updated\natomically by address.\n\nExample:\n\n    import (\n     \"sync/atomic\"\n    )\n\n    type Counter uint64\n\n    func AtomicTests() {\n     x := uint64(1)\n     x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n     _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n     x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n    }\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "GoLoopClosure",
-                "shortDescription": {
-                  "text": "Loop variables captured by the func literal"
-                },
-                "fullDescription": {
-                  "text": "Reports references to loop variables from within 'func' literals in 'defer' and 'go' statements. Such variables might have unexpected values because they are not copied to 'func' literals, and the 'func' literals in 'defer' and 'go' are not executed immediately. For more information about closures and goroutines, see What happens with closures running as goroutines? at golang.org. Example: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  go func() {\n    fmt.Println(v) // output will likely be `c c c`, not `a b c`\n  }()\n}' After the quick-fix is applied: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  v := v // `v` is copied now\n  go func() {\n    fmt.Println(v)\n  }()\n}' Note the analyzer only checks 'defer' and 'go' statements when they are the last statement in the loop body. Otherwise, the analysis might produce false detections.",
-                  "markdown": "Reports references to loop variables from within `func` literals in `defer` and `go` statements. Such variables might have unexpected values because they are not copied to `func` literals, and the `func` literals in `defer` and `go` are not executed immediately.\n\nFor more information about closures and goroutines, see [What happens\nwith closures running as goroutines? at golang.org](https://golang.org/doc/go_faq.html#closures_and_goroutines).\n\nExample:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      go func() {\n        fmt.Println(v) // output will likely be `c c c`, not `a b c`\n      }()\n    }\n\nAfter the quick-fix is applied:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      v := v // `v` is copied now\n      go func() {\n        fmt.Println(v)\n      }()\n    }\n\nNote the analyzer only checks `defer` and `go` statements when they are the last statement in the loop body.\nOtherwise, the analysis might produce false detections."
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -3521,37 +3521,6 @@
                 ]
               },
               {
-                "id": "XmlDuplicatedId",
-                "shortDescription": {
-                  "text": "Duplicate 'id' attribute"
-                },
-                "fullDescription": {
-                  "text": "Reports a duplicate 'id' attribute in XML.",
-                  "markdown": "Reports a duplicate `id` attribute in XML."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "ideaSeverity": "ERROR"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "XML",
-                      "index": 5,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "JsonSchemaDeprecation",
                 "shortDescription": {
                   "text": "Deprecated JSON property"
@@ -3572,6 +3541,37 @@
                     "target": {
                       "id": "JSON and JSON5",
                       "index": 7,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "XmlDuplicatedId",
+                "shortDescription": {
+                  "text": "Duplicate 'id' attribute"
+                },
+                "fullDescription": {
+                  "text": "Reports a duplicate 'id' attribute in XML.",
+                  "markdown": "Reports a duplicate `id` attribute in XML."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "ideaSeverity": "ERROR"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "XML",
+                      "index": 5,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3738,37 +3738,6 @@
                 ]
               },
               {
-                "id": "RequiredAttributes",
-                "shortDescription": {
-                  "text": "Missing required attribute"
-                },
-                "fullDescription": {
-                  "text": "Reports a missing mandatory attribute in an XML/HTML tag. Suggests configuring attributes that should not be reported.",
-                  "markdown": "Reports a missing mandatory attribute in an XML/HTML tag. Suggests configuring attributes that should not be reported."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "HTML",
-                      "index": 10,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "DuplicatedCode",
                 "shortDescription": {
                   "text": "Duplicated code fragment"
@@ -3789,6 +3758,37 @@
                     "target": {
                       "id": "General",
                       "index": 12,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "RequiredAttributes",
+                "shortDescription": {
+                  "text": "Missing required attribute"
+                },
+                "fullDescription": {
+                  "text": "Reports a missing mandatory attribute in an XML/HTML tag. Suggests configuring attributes that should not be reported.",
+                  "markdown": "Reports a missing mandatory attribute in an XML/HTML tag. Suggests configuring attributes that should not be reported."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "HTML",
+                      "index": 10,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -5319,13 +5319,13 @@
                 ]
               },
               {
-                "id": "RegExpDuplicateAlternationBranch",
+                "id": "RegExpRepeatedSpace",
                 "shortDescription": {
-                  "text": "Duplicate branch in alternation"
+                  "text": "Consecutive spaces"
                 },
                 "fullDescription": {
-                  "text": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression. Example: '(alpha|bravo|charlie|alpha)' After the quick-fix is applied: '(alpha|bravo|charlie)' New in 2017.1",
-                  "markdown": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression.\n\n**Example:**\n\n\n      (alpha|bravo|charlie|alpha)\n\nAfter the quick-fix is applied:\n\n\n      (alpha|bravo|charlie)\n\nNew in 2017.1"
+                  "text": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier. Example: '(     )' After the quick-fix is applied: '( {5})' New in 2017.1",
+                  "markdown": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier.\n\n**Example:**\n\n\n      (     )\n\nAfter the quick-fix is applied:\n\n\n      ( {5})\n\n\nNew in 2017.1"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -5350,13 +5350,13 @@
                 ]
               },
               {
-                "id": "RegExpRepeatedSpace",
+                "id": "RegExpDuplicateAlternationBranch",
                 "shortDescription": {
-                  "text": "Consecutive spaces"
+                  "text": "Duplicate branch in alternation"
                 },
                 "fullDescription": {
-                  "text": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier. Example: '(     )' After the quick-fix is applied: '( {5})' New in 2017.1",
-                  "markdown": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier.\n\n**Example:**\n\n\n      (     )\n\nAfter the quick-fix is applied:\n\n\n      ( {5})\n\n\nNew in 2017.1"
+                  "text": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression. Example: '(alpha|bravo|charlie|alpha)' After the quick-fix is applied: '(alpha|bravo|charlie)' New in 2017.1",
+                  "markdown": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression.\n\n**Example:**\n\n\n      (alpha|bravo|charlie|alpha)\n\nAfter the quick-fix is applied:\n\n\n      (alpha|bravo|charlie)\n\nNew in 2017.1"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -6335,37 +6335,6 @@
                 ]
               },
               {
-                "id": "CssConvertColorToHexInspection",
-                "shortDescription": {
-                  "text": "Color could be replaced with #-hex"
-                },
-                "fullDescription": {
-                  "text": "Reports an 'rgb()', 'hsl()', or other color function. Suggests replacing a color function with an equivalent hexadecimal notation. Example: 'rgb(12, 15, 255)' After the quick-fix is applied: '#0c0fff'.",
-                  "markdown": "Reports an `rgb()`, `hsl()`, or other color function.\n\nSuggests replacing a color function with an equivalent hexadecimal notation.\n\n**Example:**\n\n    rgb(12, 15, 255)\n\nAfter the quick-fix is applied:\n\n    #0c0fff.\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "CSS",
-                      "index": 9,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "CssInvalidPseudoSelector",
                 "shortDescription": {
                   "text": "Invalid pseudo-selector"
@@ -6386,6 +6355,37 @@
                     "target": {
                       "id": "CSS/Invalid elements",
                       "index": 14,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "CssConvertColorToHexInspection",
+                "shortDescription": {
+                  "text": "Color could be replaced with #-hex"
+                },
+                "fullDescription": {
+                  "text": "Reports an 'rgb()', 'hsl()', or other color function. Suggests replacing a color function with an equivalent hexadecimal notation. Example: 'rgb(12, 15, 255)' After the quick-fix is applied: '#0c0fff'.",
+                  "markdown": "Reports an `rgb()`, `hsl()`, or other color function.\n\nSuggests replacing a color function with an equivalent hexadecimal notation.\n\n**Example:**\n\n    rgb(12, 15, 255)\n\nAfter the quick-fix is applied:\n\n    #0c0fff.\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "CSS",
+                      "index": 9,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -7097,7 +7097,7 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "ssh://git@github.com/veteran-software/nowlive-logging.git",
-          "revisionId": "bddaae1d403aeb8e42753f9136ea77eb322b786d",
+          "revisionId": "4b5d4ad9e2862729f741571c661e59cfc143c0a9",
           "branch": "refs/heads/main",
           "properties": {
             "repoUrl": "https://github.com/veteran-software/nowlive-logging",
@@ -7110,9 +7110,9 @@
       "results": [],
       "automationDetails": {
         "id": "project/qodana/2023-01-28",
-        "guid": "1c010c1b-6bda-43b3-9a92-98d8ac253aa8",
+        "guid": "9b02cf95-9f65-47f3-a1ab-84ad44cfe18c",
         "properties": {
-          "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4033258682"
+          "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4033446833"
         }
       },
       "newlineSequences": [
