@@ -1,10 +1,11 @@
 {
   "languages": [
+    "XML",
+    ".gitignore (GitIgnore)",
     "vgo",
     "Plain text",
     "YAML",
     "Go",
-    "textmate",
-    ".gitignore (GitIgnore)"
+    "textmate"
   ]
 }
