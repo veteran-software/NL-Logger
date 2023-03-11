@@ -9,7 +9,7 @@ import (
 	easy "github.com/t-tomalak/logrus-easy-formatter"
 )
 
-//goland:noinspection GoUnnecessarilyExportedIdentifiers,GoUnusedConst
+//goland:noinspection GoUnusedConst
 const (
 	Command     = "[COMMAND  ]"
 	Cron        = "[CRON     ]"
@@ -20,6 +20,19 @@ const (
 	Twitch      = "[TWITCH   ]"
 	YouTubeLive = "[YOUTUBE-L]"
 	YouTubePub  = "[YOUTUBE-P]"
+	DlYouTube   = "[DL-YT    ]"
+	DlTwitch    = "[DL-TWITCH]"
+)
+
+//goland:noinspection GoUnusedConst
+const (
+	PanicLevel = logrus.PanicLevel
+	FatalLevel = logrus.FatalLevel
+	ErrorLevel = logrus.ErrorLevel
+	WarnLevel  = logrus.WarnLevel
+	InfoLevel  = logrus.InfoLevel
+	DebugLevel = logrus.DebugLevel
+	TraceLevel = logrus.TraceLevel
 )
 
 var (
@@ -43,7 +56,7 @@ func init() {
 	}
 }
 
-// Traceln - Logs the event at the Trace level
+// Traceln - Logs the event at the TraceLevel on a new line
 //
 //goland:noinspection GoUnusedExportedFunction
 func Traceln(args ...any) {
@@ -52,7 +65,7 @@ func Traceln(args ...any) {
 	}
 }
 
-// Tracef - Logs the event at the Traceln level with formatting
+// Tracef - Logs the event at the TraceLevel level with formatting
 //
 //goland:noinspection GoUnusedExportedFunction
 func Tracef(format string, args ...any) {
@@ -61,7 +74,16 @@ func Tracef(format string, args ...any) {
 	}
 }
 
-// Debugln - Logs the event at the Debug level
+// Trace - Logs the event at the TraceLevel
+//
+//goland:noinspection GoUnusedExportedFunction
+func Trace(args ...any) {
+	if log.Level == logrus.TraceLevel {
+		log.Trace(args...)
+	}
+}
+
+// Debugln - Logs the event at the DebugLevel
 //
 //goland:noinspection GoUnusedExportedFunction
 func Debugln(args ...any) {
@@ -70,7 +92,7 @@ func Debugln(args ...any) {
 	}
 }
 
-// Debugf - Logs the event at the Debug level
+// Debugf - Logs the event at the DebugLevel
 //
 //goland:noinspection GoUnusedExportedFunction
 func Debugf(format string, args ...any) {
@@ -79,7 +101,7 @@ func Debugf(format string, args ...any) {
 	}
 }
 
-// Infoln - Logs the event at the Infoln level
+// Infoln - Logs the event at the InfoLevel level
 //
 //goland:noinspection GoUnusedExportedFunction
 func Infoln(args ...any) {
@@ -88,7 +110,16 @@ func Infoln(args ...any) {
 	}
 }
 
-// Warnln - Logs the event at the Warning level
+// Infof - Logs the event at the InfoLevel
+//
+//goland:noinspection GoUnusedExportedFunction
+func Infof(format string, args ...any) {
+	if log.Level <= logrus.InfoLevel {
+		log.Infof(format, args...)
+	}
+}
+
+// Warnln - Logs the event at the WarnLevel
 //
 //goland:noinspection GoUnusedExportedFunction
 func Warnln(args ...any) {
@@ -97,7 +128,7 @@ func Warnln(args ...any) {
 	}
 }
 
-// Warnf - Logs the event at the Warning level with formatting
+// Warnf - Logs the event at the WarnLevel with formatting
 //
 //goland:noinspection GoUnusedExportedFunction
 func Warnf(format string, args ...any) {
@@ -106,7 +137,7 @@ func Warnf(format string, args ...any) {
 	}
 }
 
-// Errorln - Logs the event at the Error level
+// Errorln - Logs the event at the ErrorLevel
 //
 //goland:noinspection GoUnusedExportedFunction
 func Errorln(args ...any) {
@@ -115,7 +146,16 @@ func Errorln(args ...any) {
 	}
 }
 
-// Fatalln - Logs the event at the Fatal level
+// Errorf - Logs the event at the ErrorLevel with formatting
+//
+//goland:noinspection GoUnusedExportedFunction
+func Errorf(format string, args ...any) {
+	if log.Level == logrus.ErrorLevel {
+		log.Errorf(format, args...)
+	}
+}
+
+// Fatalln - Logs the event at the FatalLevel
 //
 //goland:noinspection GoUnusedExportedFunction
 func Fatalln(args ...any) {
@@ -124,6 +164,8 @@ func Fatalln(args ...any) {
 	}
 }
 
+// FuncName - Displays the file name and line number in logs
+//
 //goland:noinspection GoUnusedExportedFunction
 func FuncName() string {
 	pc, _, line, _ := runtime.Caller(1)
