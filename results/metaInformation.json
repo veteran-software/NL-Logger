@@ -3,16 +3,17 @@
   "tools inspection": {
     "Code Inspection": 0
   },
+  "linter": "QDGO",
   "attributes": {
     "vcs": {
       "sarifIdea": {
         "repositoryUri": "ssh://git@github.com/veteran-software/nowlive-logging.git",
-        "revisionId": "4b5d4ad9e2862729f741571c661e59cfc143c0a9",
+        "revisionId": "71e1ca872700828adbbbdd1ac78755b4103448aa",
         "branch": "refs/heads/main"
       }
     },
     "deviceId": "200820300000000-6020-707b-7d2c-e4824c0e26f8",
-    "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4033446833",
+    "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4393376338",
     "repoUrl": "https://github.com/veteran-software/nowlive-logging"
   }
 }

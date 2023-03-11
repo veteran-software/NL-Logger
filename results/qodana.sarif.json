@@ -7,7 +7,7 @@
         "driver": {
           "name": "QDGO",
           "fullName": "Qodana for Go",
-          "version": "223.8385.64",
+          "version": "223.8788.112",
           "rules": [],
           "taxa": [
             {
@@ -301,7 +301,7 @@
         "extensions": [
           {
             "name": "org.editorconfig.editorconfigjetbrains",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "EditorConfigCharClassRedundancy",
@@ -1181,7 +1181,7 @@
           },
           {
             "name": "org.jetbrains.plugins.go",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "GoUnnecessarilyExportedIdentifiers",
@@ -1716,8 +1716,8 @@
                   "text": "Migration to Go workspace is possible"
                 },
                 "fullDescription": {
-                  "text": "Generates 'go.work' files using 'replace' directives. Go workspaces is a feature introduced in Go 1.18 that allows to work simultaneously on several modules. Workspaces are a modern alternative to 'replace' directives pointing to local directories. All modules in a workspace have the same set of dependencies, thus making the configuration simpler, more robust, and requiring fewer 'go list' calls to scan the project structure. The fix for this inspection generates a new 'go.work' file and does not change existing files. By default, warning severity is used. If a generated workspace would include Go modules that were not replaced in the original 'go.mod', no warning is shown due to possible side effects caused by migration, but the fix still can be run manually. See Go Modules Reference for more information about workspaces. See Tutorial: Getting started with multi-module workspaces for Go workspaces introduction.",
-                  "markdown": "Generates 'go.work' files using 'replace' directives.\n\n\nGo workspaces is a feature introduced in Go 1.18 that allows to work simultaneously on several modules.  \n\nWorkspaces are a modern alternative to 'replace' directives pointing to local directories.  \n\nAll modules in a workspace have the same set of dependencies, thus making the configuration simpler, more robust,\nand requiring fewer 'go list' calls to scan the project structure.  \n\nThe fix for this inspection generates a new 'go.work' file and does not change existing files.\n\n\nBy default, warning severity is used. If a generated workspace would include Go modules that were not replaced\nin the original 'go.mod', no warning is shown due to possible side effects caused by migration, but the fix still can be run manually.\n\n\nSee [Go Modules Reference](https://go.dev/ref/mod#workspaces) for more information about workspaces.  \n\nSee [Tutorial: Getting started with multi-module workspaces](https://go.dev/doc/tutorial/workspaces) for Go workspaces introduction."
+                  "text": "Generates 'go.work' files using 'replace' directives. Go workspaces is a feature introduced in Go 1.18 that allows working simultaneously on several modules. Workspaces are a modern alternative to 'replace' directives pointing to local directories. All modules in a workspace have the same set of dependencies, thus making the configuration simpler, more robust, and requiring fewer 'go list' calls to scan the project structure. The fix for this inspection generates a new 'go.work' file and does not change existing files. By default, warning severity is used. If a generated workspace would include Go modules that were not replaced in the original 'go.mod', no warning is shown due to possible side effects caused by migration, but the fix still can be run manually. For more information about workspaces, see Go Modules Reference. For Go workspaces introduction, see Tutorial: Getting started with multi-module workspaces.",
+                  "markdown": "Generates 'go.work' files using 'replace' directives.\n\n\nGo workspaces is a feature introduced in Go 1.18 that allows working simultaneously on several modules.  \n\nWorkspaces are a modern alternative to 'replace' directives pointing to local directories.  \n\nAll modules in a workspace have the same set of dependencies, thus making the configuration simpler, more robust,\nand requiring fewer 'go list' calls to scan the project structure.  \n\nThe fix for this inspection generates a new 'go.work' file and does not change existing files.\n\n\nBy default, warning severity is used. If a generated workspace would include Go modules that were not replaced\nin the original 'go.mod', no warning is shown due to possible side effects caused by migration, but the fix still can be run manually.\n\n\nFor more information about workspaces, see [Go Modules Reference](https://go.dev/ref/mod#workspaces).  \n\nFor Go workspaces introduction, see [Tutorial: Getting started with multi-module\nworkspaces](https://go.dev/doc/tutorial/workspaces)."
                 },
                 "defaultConfiguration": {
                   "enabled": false,
@@ -2176,37 +2176,6 @@
                 ]
               },
               {
-                "id": "GoPrintFunctions",
-                "shortDescription": {
-                  "text": "Incorrect usage of 'fmt.Printf' and 'fmt.Println' functions"
-                },
-                "fullDescription": {
-                  "text": "Reports incorrect usages of 'fmt.Printf', 'fmt.Println', and similar formatting and printing functions. In their format strings, formatting functions use formatting verbs, like '%s', '%d', '%v', and others. If formatting verbs are used incorrectly, the result of a formatting function will contain an error. For more information about formatting verbs, see Package fmt at golang.org. Example: 'fmt.Printf(\"id: %s\", 42)' The output of this function is 'id: %!s(int=42)'. It might be not what you really want. The following function uses the '%d' formatting verb. The output with the '%d' formatting verb will be 'id: 42'. 'fmt.Printf(\"id: %d\", 42)'",
-                  "markdown": "Reports incorrect usages of `fmt.Printf`, `fmt.Println`, and similar formatting and printing functions.\n\nIn their format strings, formatting functions use formatting verbs, like `%s`, `%d`, `%v`, and others.\nIf formatting verbs are used incorrectly, the result of a formatting function will contain an error.\nFor more information about formatting verbs, see [Package fmt at golang.org](https://golang.org/pkg/fmt/).\n\nExample:\n\n    fmt.Printf(\"id: %s\", 42)\n\nThe output of this function is `id: %!s(int=42)`. It might be not what you really want.\nThe following function uses the `%d` formatting verb.\nThe output with the `%d` formatting verb will be `id: 42`.\n\n    fmt.Printf(\"id: %d\", 42)\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "note",
-                  "parameters": {
-                    "ideaSeverity": "WEAK WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoDeferInLoop",
                 "shortDescription": {
                   "text": "'defer' in the loop"
@@ -2238,13 +2207,13 @@
                 ]
               },
               {
-                "id": "GoDeferGo",
+                "id": "GoPrintFunctions",
                 "shortDescription": {
-                  "text": "Defer/go statement calls 'recover' or 'panic' directly"
+                  "text": "Incorrect usage of 'fmt.Printf' and 'fmt.Println' functions"
                 },
                 "fullDescription": {
-                  "text": "Reports 'defer' and 'go' statements that call 'panic()' or 'recover()' directly. Such statements are rarely useful and might indicate a misuse of the 'panic()' and 'recover()' mechanism. In particular: 'go panic()': a newly-started goroutine will panic immediately. 'defer panic()': a function with this statement will always panic on exit. 'go recover()': has no effect as newly-started goroutine cannot panic. 'defer recover()': function with this statement will silently stop panicking. This could be a valid usage, but an idiomatic way is to inspect the value returned by 'recover()': 'defer func() {\n  if r := recover(); r != nil {\n    fmt.Println(\"Recovered from: \", r)\n  }\n}()' For more information about go statements and panics handling, see Handling panics and Go statements in the Go Language Specification.",
-                  "markdown": "Reports `defer` and `go` statements that call `panic()` or `recover()` directly.\n\nSuch statements are rarely useful and might indicate a misuse of the `panic()` and `recover()` mechanism.\nIn particular:\n\n* `go panic()`: a newly-started goroutine will panic immediately.\n* `defer panic()`: a function with this statement will always panic on exit.\n* `go recover()`: has no effect as newly-started goroutine cannot panic.\n* `defer recover()`: function with this statement will silently stop panicking. This could be a valid usage, but an idiomatic way is to inspect the value returned by `recover()`:\n\n      defer func() {\n        if r := recover(); r != nil {\n          fmt.Println(\"Recovered from: \", r)\n        }\n      }()\n\nFor more information about go statements and panics handling, see [Handling\npanics](https://golang.org/ref/spec#Handling_panics) and\n[Go statements](https://golang.org/ref/spec#Go_statements) in the Go Language Specification."
+                  "text": "Reports incorrect usages of 'fmt.Printf', 'fmt.Println', and similar formatting and printing functions. In their format strings, formatting functions use formatting verbs, like '%s', '%d', '%v', and others. If formatting verbs are used incorrectly, the result of a formatting function will contain an error. For more information about formatting verbs, see Package fmt at golang.org. Example: 'fmt.Printf(\"id: %s\", 42)' The output of this function is 'id: %!s(int=42)'. It might be not what you really want. The following function uses the '%d' formatting verb. The output with the '%d' formatting verb will be 'id: 42'. 'fmt.Printf(\"id: %d\", 42)'",
+                  "markdown": "Reports incorrect usages of `fmt.Printf`, `fmt.Println`, and similar formatting and printing functions.\n\nIn their format strings, formatting functions use formatting verbs, like `%s`, `%d`, `%v`, and others.\nIf formatting verbs are used incorrectly, the result of a formatting function will contain an error.\nFor more information about formatting verbs, see [Package fmt at golang.org](https://golang.org/pkg/fmt/).\n\nExample:\n\n    fmt.Printf(\"id: %s\", 42)\n\nThe output of this function is `id: %!s(int=42)`. It might be not what you really want.\nThe following function uses the `%d` formatting verb.\nThe output with the `%d` formatting verb will be `id: 42`.\n\n    fmt.Printf(\"id: %d\", 42)\n"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -2282,6 +2251,37 @@
                   "level": "warning",
                   "parameters": {
                     "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Probable bugs",
+                      "index": 3,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoDeferGo",
+                "shortDescription": {
+                  "text": "Defer/go statement calls 'recover' or 'panic' directly"
+                },
+                "fullDescription": {
+                  "text": "Reports 'defer' and 'go' statements that call 'panic()' or 'recover()' directly. Such statements are rarely useful and might indicate a misuse of the 'panic()' and 'recover()' mechanism. In particular: 'go panic()': a newly-started goroutine will panic immediately. 'defer panic()': a function with this statement will always panic on exit. 'go recover()': has no effect as newly-started goroutine cannot panic. 'defer recover()': function with this statement will silently stop panicking. This could be a valid usage, but an idiomatic way is to inspect the value returned by 'recover()': 'defer func() {\n  if r := recover(); r != nil {\n    fmt.Println(\"Recovered from: \", r)\n  }\n}()' For more information about go statements and panics handling, see Handling panics and Go statements in the Go Language Specification.",
+                  "markdown": "Reports `defer` and `go` statements that call `panic()` or `recover()` directly.\n\nSuch statements are rarely useful and might indicate a misuse of the `panic()` and `recover()` mechanism.\nIn particular:\n\n* `go panic()`: a newly-started goroutine will panic immediately.\n* `defer panic()`: a function with this statement will always panic on exit.\n* `go recover()`: has no effect as newly-started goroutine cannot panic.\n* `defer recover()`: function with this statement will silently stop panicking. This could be a valid usage, but an idiomatic way is to inspect the value returned by `recover()`:\n\n      defer func() {\n        if r := recover(); r != nil {\n          fmt.Println(\"Recovered from: \", r)\n        }\n      }()\n\nFor more information about go statements and panics handling, see [Handling\npanics](https://golang.org/ref/spec#Handling_panics) and\n[Go statements](https://golang.org/ref/spec#Go_statements) in the Go Language Specification."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "note",
+                  "parameters": {
+                    "ideaSeverity": "WEAK WARNING"
                   }
                 },
                 "relationships": [
@@ -2765,37 +2765,6 @@
                 ]
               },
               {
-                "id": "GoEmptyDeclaration",
-                "shortDescription": {
-                  "text": "Empty declaration"
-                },
-                "fullDescription": {
-                  "text": "Reports empty declarations. Empty declarations have no effect. If you remove them, you might improve code readability. Example: 'func main() {\n const () // empty declaration\n}' You can apply the Delete empty declaration quick-fix to remove this declaration.",
-                  "markdown": "Reports empty declarations.\n\nEmpty declarations have no effect. If you remove them, you might improve code readability.\n\nExample:\n\n    func main() {\n     const () // empty declaration\n    }\n\nYou can apply the **Delete empty declaration** quick-fix to remove this declaration."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Declaration redundancy",
-                      "index": 4,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoMissingTrailingComma",
                 "shortDescription": {
                   "text": "Missing trailing comma before a newline in a composite literal"
@@ -2816,6 +2785,37 @@
                     "target": {
                       "id": "Go/General",
                       "index": 2,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoEmptyDeclaration",
+                "shortDescription": {
+                  "text": "Empty declaration"
+                },
+                "fullDescription": {
+                  "text": "Reports empty declarations. Empty declarations have no effect. If you remove them, you might improve code readability. Example: 'func main() {\n const () // empty declaration\n}' You can apply the Delete empty declaration quick-fix to remove this declaration.",
+                  "markdown": "Reports empty declarations.\n\nEmpty declarations have no effect. If you remove them, you might improve code readability.\n\nExample:\n\n    func main() {\n     const () // empty declaration\n    }\n\nYou can apply the **Delete empty declaration** quick-fix to remove this declaration."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Declaration redundancy",
+                      "index": 4,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2922,11 +2922,11 @@
               {
                 "id": "GoTypeParameterInLowerCase",
                 "shortDescription": {
-                  "text": "Type parameter declared in lower case"
+                  "text": "Type parameter is declared in lowercase"
                 },
                 "fullDescription": {
-                  "text": "Reports type parameters which are declared in lower case. According to official Go examples, that's a good form to use type parameters in upper case. This inspection helps make your code more readable. 'func PrintSlice[t any](s []t) {\n    for _, v := range s{\n        print(v)\n    }\n}' The type parameter 't' declared in lower case.",
-                  "markdown": "Reports type parameters which are declared in lower case.\n\nAccording to official Go examples, that's a good form to use type parameters in upper case.\nThis inspection helps make your code more readable.\n\n    func PrintSlice[t any](s []t) {\n        for _, v := range s{\n            print(v)\n        }\n    }\n\nThe type parameter `t` declared in lower case."
+                  "text": "Reports type parameters that are declared in lowercase. Examples in the official Go documentation use type parameters in uppercase. This inspection follows this uppercase rule for type parameters. 'func PrintSlice[t any](s []t) {\n    for _, v := range s{\n        print(v)\n    }\n}' The type parameter 't' is declared in lowercase and thus will be reported.",
+                  "markdown": "Reports type parameters that are declared in lowercase.\n\nExamples in the official Go documentation use type parameters in uppercase.\nThis inspection follows this uppercase rule for type parameters.\n\n    func PrintSlice[t any](s []t) {\n        for _, v := range s{\n            print(v)\n        }\n    }\n\nThe type parameter `t` is declared in lowercase and thus will be reported."
                 },
                 "defaultConfiguration": {
                   "enabled": false,
@@ -3044,37 +3044,6 @@
                 ]
               },
               {
-                "id": "GoContextTodo",
-                "shortDescription": {
-                  "text": "Usage of context.TODO()"
-                },
-                "fullDescription": {
-                  "text": "Reports usages of 'context.TODO()'. According to the documentation at pkg.go.dev, you need to use 'context.TODO' when it is unclear what 'Context' to use, or 'Context' is not yet available. 'Context' might not be available because of the surrounding function that has not yet been extended to accept the 'Context' parameter. Note that it is a temporary placeholder, and you must change it in the future to a more meaningful context (for example, 'context.Background()').",
-                  "markdown": "Reports usages of `context.TODO()`.\n\nAccording to the [documentation at pkg.go.dev](https://pkg.go.dev/context#TODO),\nyou need to use `context.TODO` when it is unclear what\n`Context` to use, or `Context` is not yet available.\n`Context` might not be available because of the surrounding function that\nhas not yet been extended to accept the `Context` parameter.\n\nNote that it is a temporary placeholder, and you must change it in the future to a more meaningful\ncontext (for example, `context.Background()`)."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "ideaSeverity": "WEAK WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/General",
-                      "index": 2,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoUnusedCallResult",
                 "shortDescription": {
                   "text": "Unused function or method call result"
@@ -3095,6 +3064,37 @@
                     "target": {
                       "id": "Go/Probable bugs",
                       "index": 3,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoContextTodo",
+                "shortDescription": {
+                  "text": "Usage of context.TODO()"
+                },
+                "fullDescription": {
+                  "text": "Reports usages of 'context.TODO()'. According to the documentation at pkg.go.dev, you need to use 'context.TODO' when it is unclear what 'Context' to use, or 'Context' is not yet available. 'Context' might not be available because of the surrounding function that has not yet been extended to accept the 'Context' parameter. Note that it is a temporary placeholder, and you must change it in the future to a more meaningful context (for example, 'context.Background()').",
+                  "markdown": "Reports usages of `context.TODO()`.\n\nAccording to the [documentation at pkg.go.dev](https://pkg.go.dev/context#TODO),\nyou need to use `context.TODO` when it is unclear what\n`Context` to use, or `Context` is not yet available.\n`Context` might not be available because of the surrounding function that\nhas not yet been extended to accept the `Context` parameter.\n\nNote that it is a temporary placeholder, and you must change it in the future to a more meaningful\ncontext (for example, `context.Background()`)."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "ideaSeverity": "WEAK WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/General",
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3323,37 +3323,6 @@
                 ]
               },
               {
-                "id": "GoLoopClosure",
-                "shortDescription": {
-                  "text": "Loop variables captured by the func literal"
-                },
-                "fullDescription": {
-                  "text": "Reports references to loop variables from within 'func' literals in 'defer' and 'go' statements. Such variables might have unexpected values because they are not copied to 'func' literals, and the 'func' literals in 'defer' and 'go' are not executed immediately. For more information about closures and goroutines, see What happens with closures running as goroutines? at golang.org. Example: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  go func() {\n    fmt.Println(v) // output will likely be `c c c`, not `a b c`\n  }()\n}' After the quick-fix is applied: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  v := v // `v` is copied now\n  go func() {\n    fmt.Println(v)\n  }()\n}' Note the analyzer only checks 'defer' and 'go' statements when they are the last statement in the loop body. Otherwise, the analysis might produce false detections.",
-                  "markdown": "Reports references to loop variables from within `func` literals in `defer` and `go` statements. Such variables might have unexpected values because they are not copied to `func` literals, and the `func` literals in `defer` and `go` are not executed immediately.\n\nFor more information about closures and goroutines, see [What happens\nwith closures running as goroutines? at golang.org](https://golang.org/doc/go_faq.html#closures_and_goroutines).\n\nExample:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      go func() {\n        fmt.Println(v) // output will likely be `c c c`, not `a b c`\n      }()\n    }\n\nAfter the quick-fix is applied:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      v := v // `v` is copied now\n      go func() {\n        fmt.Println(v)\n      }()\n    }\n\nNote the analyzer only checks `defer` and `go` statements when they are the last statement in the loop body.\nOtherwise, the analysis might produce false detections."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoAssignmentToReceiver",
                 "shortDescription": {
                   "text": "Assignment to a receiver"
@@ -3374,6 +3343,37 @@
                     "target": {
                       "id": "Go/Control flow issues",
                       "index": 23,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoLoopClosure",
+                "shortDescription": {
+                  "text": "Loop variables captured by the func literal"
+                },
+                "fullDescription": {
+                  "text": "Reports references to loop variables from within 'func' literals in 'defer' and 'go' statements. Such variables might have unexpected values because they are not copied to 'func' literals, and the 'func' literals in 'defer' and 'go' are not executed immediately. For more information about closures and goroutines, see What happens with closures running as goroutines? at golang.org. Example: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  go func() {\n    fmt.Println(v) // output will likely be `c c c`, not `a b c`\n  }()\n}' After the quick-fix is applied: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  v := v // `v` is copied now\n  go func() {\n    fmt.Println(v)\n  }()\n}' Note the analyzer only checks 'defer' and 'go' statements when they are the last statement in the loop body. Otherwise, the analysis might produce false detections.",
+                  "markdown": "Reports references to loop variables from within `func` literals in `defer` and `go` statements. Such variables might have unexpected values because they are not copied to `func` literals, and the `func` literals in `defer` and `go` are not executed immediately.\n\nFor more information about closures and goroutines, see [What happens\nwith closures running as goroutines? at golang.org](https://golang.org/doc/go_faq.html#closures_and_goroutines).\n\nExample:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      go func() {\n        fmt.Println(v) // output will likely be `c c c`, not `a b c`\n      }()\n    }\n\nAfter the quick-fix is applied:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      v := v // `v` is copied now\n      go func() {\n        fmt.Println(v)\n      }()\n    }\n\nNote the analyzer only checks `defer` and `go` statements when they are the last statement in the loop body.\nOtherwise, the analysis might produce false detections."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Probable bugs",
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3487,7 +3487,7 @@
           },
           {
             "name": "com.intellij",
-            "version": "223.8385.64",
+            "version": "223.8788.112",
             "rules": [
               {
                 "id": "XmlHighlighting",
@@ -3497,6 +3497,37 @@
                 "fullDescription": {
                   "text": "Reports XML validation problems in the results of a batch code inspection.",
                   "markdown": "Reports XML validation problems in the results of a batch code inspection."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "ideaSeverity": "ERROR"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "XML",
+                      "index": 5,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "XmlDuplicatedId",
+                "shortDescription": {
+                  "text": "Duplicate 'id' attribute"
+                },
+                "fullDescription": {
+                  "text": "Reports a duplicate 'id' attribute in XML.",
+                  "markdown": "Reports a duplicate `id` attribute in XML."
                 },
                 "defaultConfiguration": {
                   "enabled": false,
@@ -3541,37 +3572,6 @@
                     "target": {
                       "id": "JSON and JSON5",
                       "index": 7,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "XmlDuplicatedId",
-                "shortDescription": {
-                  "text": "Duplicate 'id' attribute"
-                },
-                "fullDescription": {
-                  "text": "Reports a duplicate 'id' attribute in XML.",
-                  "markdown": "Reports a duplicate `id` attribute in XML."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "ideaSeverity": "ERROR"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "XML",
-                      "index": 5,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3738,37 +3738,6 @@
                 ]
               },
               {
-                "id": "DuplicatedCode",
-                "shortDescription": {
-                  "text": "Duplicated code fragment"
-                },
-                "fullDescription": {
-                  "text": "Reports duplicated blocks of code from the selected scope: the same file or the entire project. The inspection features quick-fixes that help you to set the size of detected duplicates, navigate to repetitive code fragments, and compare them in a tool window. The inspection options allow you to select the scope of the reported duplicated fragments and set the initial size for the duplicated language constructs. You can also configure the constructs that you want to anonymize in File | Settings | Editor | Duplicates.",
-                  "markdown": "Reports duplicated blocks of code from the selected scope: the same file or the entire project. The inspection features quick-fixes that help you to set the size of detected duplicates, navigate to repetitive code fragments, and compare them in a tool window. The inspection options allow you to select the scope of the reported duplicated fragments and set the initial size for the duplicated language constructs. You can also configure the constructs that you want to anonymize in [File \\| Settings \\| Editor \\| Duplicates](settings://duplicates.index)."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "ideaSeverity": "WEAK WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "General",
-                      "index": 12,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "RequiredAttributes",
                 "shortDescription": {
                   "text": "Missing required attribute"
@@ -3789,6 +3758,37 @@
                     "target": {
                       "id": "HTML",
                       "index": 10,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "DuplicatedCode",
+                "shortDescription": {
+                  "text": "Duplicated code fragment"
+                },
+                "fullDescription": {
+                  "text": "Reports duplicated blocks of code from the selected scope: the same file or the entire project. The inspection features quick-fixes that help you to set the size of detected duplicates, navigate to repetitive code fragments, and compare them in a tool window. The inspection options allow you to select the scope of the reported duplicated fragments and set the initial size for the duplicated language constructs. You can also configure the constructs that you want to anonymize in File | Settings | Editor | Duplicates.",
+                  "markdown": "Reports duplicated blocks of code from the selected scope: the same file or the entire project. The inspection features quick-fixes that help you to set the size of detected duplicates, navigate to repetitive code fragments, and compare them in a tool window. The inspection options allow you to select the scope of the reported duplicated fragments and set the initial size for the duplicated language constructs. You can also configure the constructs that you want to anonymize in [File \\| Settings \\| Editor \\| Duplicates](settings://duplicates.index)."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "ideaSeverity": "WEAK WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "General",
+                      "index": 12,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -4823,37 +4823,6 @@
                 ]
               },
               {
-                "id": "RegExpOctalEscape",
-                "shortDescription": {
-                  "text": "Octal escape"
-                },
-                "fullDescription": {
-                  "text": "Reports octal escapes, which are easily confused with back references. Use hexadecimal escapes to avoid confusion. Example: '\\07' After the quick-fix is applied: '\\x07' New in 2017.1",
-                  "markdown": "Reports octal escapes, which are easily confused with back references. Use hexadecimal escapes to avoid confusion.\n\n**Example:**\n\n\n      \\07\n\nAfter the quick-fix is applied:\n\n\n      \\x07\n\nNew in 2017.1"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "note",
-                  "parameters": {
-                    "ideaSeverity": "INFORMATION"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "RegExp",
-                      "index": 8,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "HtmlExtraClosingTag",
                 "shortDescription": {
                   "text": "Redundant closing tag"
@@ -4874,6 +4843,37 @@
                     "target": {
                       "id": "HTML",
                       "index": 10,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "RegExpOctalEscape",
+                "shortDescription": {
+                  "text": "Octal escape"
+                },
+                "fullDescription": {
+                  "text": "Reports octal escapes, which are easily confused with back references. Use hexadecimal escapes to avoid confusion. Example: '\\07' After the quick-fix is applied: '\\x07' New in 2017.1",
+                  "markdown": "Reports octal escapes, which are easily confused with back references. Use hexadecimal escapes to avoid confusion.\n\n**Example:**\n\n\n      \\07\n\nAfter the quick-fix is applied:\n\n\n      \\x07\n\nNew in 2017.1"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "note",
+                  "parameters": {
+                    "ideaSeverity": "INFORMATION"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "RegExp",
+                      "index": 8,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -5319,13 +5319,13 @@
                 ]
               },
               {
-                "id": "RegExpRepeatedSpace",
+                "id": "RegExpDuplicateAlternationBranch",
                 "shortDescription": {
-                  "text": "Consecutive spaces"
+                  "text": "Duplicate branch in alternation"
                 },
                 "fullDescription": {
-                  "text": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier. Example: '(     )' After the quick-fix is applied: '( {5})' New in 2017.1",
-                  "markdown": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier.\n\n**Example:**\n\n\n      (     )\n\nAfter the quick-fix is applied:\n\n\n      ( {5})\n\n\nNew in 2017.1"
+                  "text": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression. Example: '(alpha|bravo|charlie|alpha)' After the quick-fix is applied: '(alpha|bravo|charlie)' New in 2017.1",
+                  "markdown": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression.\n\n**Example:**\n\n\n      (alpha|bravo|charlie|alpha)\n\nAfter the quick-fix is applied:\n\n\n      (alpha|bravo|charlie)\n\nNew in 2017.1"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -5350,13 +5350,13 @@
                 ]
               },
               {
-                "id": "RegExpDuplicateAlternationBranch",
+                "id": "RegExpRepeatedSpace",
                 "shortDescription": {
-                  "text": "Duplicate branch in alternation"
+                  "text": "Consecutive spaces"
                 },
                 "fullDescription": {
-                  "text": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression. Example: '(alpha|bravo|charlie|alpha)' After the quick-fix is applied: '(alpha|bravo|charlie)' New in 2017.1",
-                  "markdown": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression.\n\n**Example:**\n\n\n      (alpha|bravo|charlie|alpha)\n\nAfter the quick-fix is applied:\n\n\n      (alpha|bravo|charlie)\n\nNew in 2017.1"
+                  "text": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier. Example: '(     )' After the quick-fix is applied: '( {5})' New in 2017.1",
+                  "markdown": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier.\n\n**Example:**\n\n\n      (     )\n\nAfter the quick-fix is applied:\n\n\n      ( {5})\n\n\nNew in 2017.1"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -5514,7 +5514,7 @@
           },
           {
             "name": "org.jetbrains.plugins.yaml",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "YAMLRecursiveAlias",
@@ -5712,7 +5712,7 @@
           },
           {
             "name": "com.intellij.css",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "CssUnusedSymbol",
@@ -6499,7 +6499,7 @@
           },
           {
             "name": "HtmlTools",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "HtmlRequiredAltAttribute",
@@ -6852,7 +6852,7 @@
           },
           {
             "name": "org.intellij.intelliLang",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "InjectedReferences",
@@ -6895,7 +6895,7 @@
           },
           {
             "name": "org.jetbrains.plugins.go-template",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "GoTemplateUnknownVariable",
@@ -6969,7 +6969,7 @@
           },
           {
             "name": "tanvd.grazi",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "LanguageDetectionInspection",
@@ -7043,7 +7043,7 @@
           },
           {
             "name": "org.intellij.qodana",
-            "version": "223.8385",
+            "version": "223.8788",
             "rules": [
               {
                 "id": "QodanaServiceMessage",
@@ -7097,7 +7097,7 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "ssh://git@github.com/veteran-software/nowlive-logging.git",
-          "revisionId": "4b5d4ad9e2862729f741571c661e59cfc143c0a9",
+          "revisionId": "71e1ca872700828adbbbdd1ac78755b4103448aa",
           "branch": "refs/heads/main",
           "properties": {
             "repoUrl": "https://github.com/veteran-software/nowlive-logging",
@@ -7109,10 +7109,10 @@
       ],
       "results": [],
       "automationDetails": {
-        "id": "project/qodana/2023-01-28",
-        "guid": "9b02cf95-9f65-47f3-a1ab-84ad44cfe18c",
+        "id": "project/qodana/2023-03-11",
+        "guid": "507d8d1d-ce9a-4915-ad54-6ee3762f3398",
         "properties": {
-          "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4033446833"
+          "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4393376338"
         }
       },
       "newlineSequences": [
