@@ -19,8 +19,8 @@
               "name": "Go"
             },
             {
-              "id": "Go/General",
-              "name": "General",
+              "id": "Go/Probable bugs",
+              "name": "Probable bugs",
               "relationships": [
                 {
                   "target": {
@@ -37,8 +37,8 @@
               ]
             },
             {
-              "id": "Go/Probable bugs",
-              "name": "Probable bugs",
+              "id": "Go/General",
+              "name": "General",
               "relationships": [
                 {
                   "target": {
@@ -1184,37 +1184,6 @@
             "version": "223.8914",
             "rules": [
               {
-                "id": "GoUnnecessarilyExportedIdentifiers",
-                "shortDescription": {
-                  "text": "Unnecessarily exported identifier"
-                },
-                "fullDescription": {
-                  "text": "Reports exported identifiers that are used only in the package where they are defined but are not used in other packages. Making them exported is redundant and may clutter the API of the package.",
-                  "markdown": "Reports exported identifiers that are used only in the package where they are defined but are not used in other packages.\n\nMaking them exported is redundant and may clutter the API of the package."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "ideaSeverity": "WEAK WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/General",
-                      "index": 2,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoVetCopyLock",
                 "shortDescription": {
                   "text": "Locks mistakenly passed by value"
@@ -1234,6 +1203,37 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
+                      "index": 2,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoUnnecessarilyExportedIdentifiers",
+                "shortDescription": {
+                  "text": "Unnecessarily exported identifier"
+                },
+                "fullDescription": {
+                  "text": "Reports exported identifiers that are used only in the package where they are defined but are not used in other packages. Making them exported is redundant and may clutter the API of the package.",
+                  "markdown": "Reports exported identifiers that are used only in the package where they are defined but are not used in other packages.\n\nMaking them exported is redundant and may clutter the API of the package."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "ideaSeverity": "WEAK WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/General",
                       "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
@@ -1265,7 +1265,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1296,7 +1296,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1358,7 +1358,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1420,7 +1420,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1451,7 +1451,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1513,7 +1513,7 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1575,7 +1575,7 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1637,7 +1637,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1761,7 +1761,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -1916,7 +1916,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2009,7 +2009,7 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2040,7 +2040,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2071,7 +2071,7 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2195,7 +2195,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2257,7 +2257,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2288,7 +2288,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2319,7 +2319,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2412,7 +2412,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2474,7 +2474,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2536,7 +2536,7 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2629,7 +2629,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2703,37 +2703,6 @@
                 ]
               },
               {
-                "id": "GoUnusedFunction",
-                "shortDescription": {
-                  "text": "Unused function"
-                },
-                "fullDescription": {
-                  "text": "Reports unused unexported functions. In Go, a function is unexported if it begins with a small letter. Names of unexported functions that were defined but never used are grayed out. '// Unused unexported function\nfunc unExportedUnusedFunc()  {\n\n}\n\nfunc main() {\n fmt.Println(\"Hello\")\n}'",
-                  "markdown": "Reports unused unexported functions.\n\nIn Go, a function is unexported if it begins with a small letter. Names of unexported functions that were defined but never used are\ngrayed out.\n\n    // Unused unexported function\n    func unExportedUnusedFunc()  {\n\n    }\n\n    func main() {\n     fmt.Println(\"Hello\")\n    }\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Declaration redundancy",
-                      "index": 4,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoUnusedConst",
                 "shortDescription": {
                   "text": "Unused constant"
@@ -2765,13 +2734,13 @@
                 ]
               },
               {
-                "id": "GoEmptyDeclaration",
+                "id": "GoUnusedFunction",
                 "shortDescription": {
-                  "text": "Empty declaration"
+                  "text": "Unused function"
                 },
                 "fullDescription": {
-                  "text": "Reports empty declarations. Empty declarations have no effect. If you remove them, you might improve code readability. Example: 'func main() {\n const () // empty declaration\n}' You can apply the Delete empty declaration quick-fix to remove this declaration.",
-                  "markdown": "Reports empty declarations.\n\nEmpty declarations have no effect. If you remove them, you might improve code readability.\n\nExample:\n\n    func main() {\n     const () // empty declaration\n    }\n\nYou can apply the **Delete empty declaration** quick-fix to remove this declaration."
+                  "text": "Reports unused unexported functions. In Go, a function is unexported if it begins with a small letter. Names of unexported functions that were defined but never used are grayed out. '// Unused unexported function\nfunc unExportedUnusedFunc()  {\n\n}\n\nfunc main() {\n fmt.Println(\"Hello\")\n}'",
+                  "markdown": "Reports unused unexported functions.\n\nIn Go, a function is unexported if it begins with a small letter. Names of unexported functions that were defined but never used are\ngrayed out.\n\n    // Unused unexported function\n    func unExportedUnusedFunc()  {\n\n    }\n\n    func main() {\n     fmt.Println(\"Hello\")\n    }\n"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -2815,7 +2784,38 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoEmptyDeclaration",
+                "shortDescription": {
+                  "text": "Empty declaration"
+                },
+                "fullDescription": {
+                  "text": "Reports empty declarations. Empty declarations have no effect. If you remove them, you might improve code readability. Example: 'func main() {\n const () // empty declaration\n}' You can apply the Delete empty declaration quick-fix to remove this declaration.",
+                  "markdown": "Reports empty declarations.\n\nEmpty declarations have no effect. If you remove them, you might improve code readability.\n\nExample:\n\n    func main() {\n     const () // empty declaration\n    }\n\nYou can apply the **Delete empty declaration** quick-fix to remove this declaration."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Declaration redundancy",
+                      "index": 4,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2877,7 +2877,38 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoStringsReplaceCount",
+                "shortDescription": {
+                  "text": "Incorrect 'strings.Replace' count argument"
+                },
+                "fullDescription": {
+                  "text": "Reports 'strings.Replace' calls with the replace count '0' instead of '-1'. The count argument for how many times a string should be replaced should not be '0' as it will not replace anything and make the function call redundant. Use '-1' instead. Example: 'a := strings.Replace(\"SSS\", \"S\", \"H\", 0) // replaces nothing\nb := strings.Replace(\"SSS\", \"S\", \"H\", -1) // replaces all S occurrences with H'",
+                  "markdown": "Reports `strings.Replace` calls with the replace count `0` instead of `-1`.\n\nThe count argument for how many times a string should be replaced should not be `0`\nas it will not replace anything and make the function call redundant. Use `-1` instead.\n\nExample:\n\n    a := strings.Replace(\"SSS\", \"S\", \"H\", 0) // replaces nothing\n    b := strings.Replace(\"SSS\", \"S\", \"H\", -1) // replaces all S occurrences with H\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Probable bugs",
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2909,37 +2940,6 @@
                     "target": {
                       "id": "Go/Code style issues",
                       "index": 16,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "GoStringsReplaceCount",
-                "shortDescription": {
-                  "text": "Incorrect 'strings.Replace' count argument"
-                },
-                "fullDescription": {
-                  "text": "Reports 'strings.Replace' calls with the replace count '0' instead of '-1'. The count argument for how many times a string should be replaced should not be '0' as it will not replace anything and make the function call redundant. Use '-1' instead. Example: 'a := strings.Replace(\"SSS\", \"S\", \"H\", 0) // replaces nothing\nb := strings.Replace(\"SSS\", \"S\", \"H\", -1) // replaces all S occurrences with H'",
-                  "markdown": "Reports `strings.Replace` calls with the replace count `0` instead of `-1`.\n\nThe count argument for how many times a string should be replaced should not be `0`\nas it will not replace anything and make the function call redundant. Use `-1` instead.\n\nExample:\n\n    a := strings.Replace(\"SSS\", \"S\", \"H\", 0) // replaces nothing\n    b := strings.Replace(\"SSS\", \"S\", \"H\", -1) // replaces all S occurrences with H\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3001,7 +3001,7 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3063,7 +3063,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3094,7 +3094,7 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3156,7 +3156,7 @@
                   {
                     "target": {
                       "id": "Go/General",
-                      "index": 2,
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3249,7 +3249,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3280,7 +3280,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3323,68 +3323,6 @@
                 ]
               },
               {
-                "id": "GoVetAtomic",
-                "shortDescription": {
-                  "text": "Incorrect usage of the 'sync/atomic' package"
-                },
-                "fullDescription": {
-                  "text": "Reports assignment statements of the form 'x = atomic.AddUint64(&x, 1)'. Such operations are not atomic, and is a common misuse of the 'sync/atomic' API. To make them atomic, one need to remove the assignment to use a direct call: 'atomic.AddUint64(&x, 1)'. In that case, the value of 'x' will be updated atomically by address. Example: 'import (\n \"sync/atomic\"\n)\n\ntype Counter uint64\n\nfunc AtomicTests() {\n x := uint64(1)\n x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n}'",
-                  "markdown": "Reports assignment statements of the form `x = atomic.AddUint64(&x, 1)`.\n\nSuch operations are not atomic,\nand is a common misuse of the `sync/atomic` API. To make them atomic, one need to remove the assignment\nto use a direct call: `atomic.AddUint64(&x, 1)`. In that case, the value of `x` will be updated\natomically by address.\n\nExample:\n\n    import (\n     \"sync/atomic\"\n    )\n\n    type Counter uint64\n\n    func AtomicTests() {\n     x := uint64(1)\n     x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n     _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n     x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n    }\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "GoLoopClosure",
-                "shortDescription": {
-                  "text": "Loop variables captured by the func literal"
-                },
-                "fullDescription": {
-                  "text": "Reports references to loop variables from within 'func' literals in 'defer' and 'go' statements. Such variables might have unexpected values because they are not copied to 'func' literals, and the 'func' literals in 'defer' and 'go' are not executed immediately. For more information about closures and goroutines, see What happens with closures running as goroutines? at golang.org. Example: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  go func() {\n    fmt.Println(v) // output will likely be `c c c`, not `a b c`\n  }()\n}' After the quick-fix is applied: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  v := v // `v` is copied now\n  go func() {\n    fmt.Println(v)\n  }()\n}' Note the analyzer only checks 'defer' and 'go' statements when they are the last statement in the loop body. Otherwise, the analysis might produce false detections.",
-                  "markdown": "Reports references to loop variables from within `func` literals in `defer` and `go` statements. Such variables might have unexpected values because they are not copied to `func` literals, and the `func` literals in `defer` and `go` are not executed immediately.\n\nFor more information about closures and goroutines, see [What happens\nwith closures running as goroutines? at golang.org](https://golang.org/doc/go_faq.html#closures_and_goroutines).\n\nExample:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      go func() {\n        fmt.Println(v) // output will likely be `c c c`, not `a b c`\n      }()\n    }\n\nAfter the quick-fix is applied:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      v := v // `v` is copied now\n      go func() {\n        fmt.Println(v)\n      }()\n    }\n\nNote the analyzer only checks `defer` and `go` statements when they are the last statement in the loop body.\nOtherwise, the analysis might produce false detections."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoAssignmentToReceiver",
                 "shortDescription": {
                   "text": "Assignment to a receiver"
@@ -3416,6 +3354,68 @@
                 ]
               },
               {
+                "id": "GoVetAtomic",
+                "shortDescription": {
+                  "text": "Incorrect usage of the 'sync/atomic' package"
+                },
+                "fullDescription": {
+                  "text": "Reports assignment statements of the form 'x = atomic.AddUint64(&x, 1)'. Such operations are not atomic, and is a common misuse of the 'sync/atomic' API. To make them atomic, one need to remove the assignment to use a direct call: 'atomic.AddUint64(&x, 1)'. In that case, the value of 'x' will be updated atomically by address. Example: 'import (\n \"sync/atomic\"\n)\n\ntype Counter uint64\n\nfunc AtomicTests() {\n x := uint64(1)\n x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n}'",
+                  "markdown": "Reports assignment statements of the form `x = atomic.AddUint64(&x, 1)`.\n\nSuch operations are not atomic,\nand is a common misuse of the `sync/atomic` API. To make them atomic, one need to remove the assignment\nto use a direct call: `atomic.AddUint64(&x, 1)`. In that case, the value of `x` will be updated\natomically by address.\n\nExample:\n\n    import (\n     \"sync/atomic\"\n    )\n\n    type Counter uint64\n\n    func AtomicTests() {\n     x := uint64(1)\n     x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n     _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n     x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n    }\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Probable bugs",
+                      "index": 2,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoLoopClosure",
+                "shortDescription": {
+                  "text": "Loop variables captured by the func literal"
+                },
+                "fullDescription": {
+                  "text": "Reports references to loop variables from within 'func' literals in 'defer' and 'go' statements. Such variables might have unexpected values because they are not copied to 'func' literals, and the 'func' literals in 'defer' and 'go' are not executed immediately. For more information about closures and goroutines, see What happens with closures running as goroutines? at golang.org. Example: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  go func() {\n    fmt.Println(v) // output will likely be `c c c`, not `a b c`\n  }()\n}' After the quick-fix is applied: 'for _, v := range []string{\"a\", \"b\", \"c\"} {\n  v := v // `v` is copied now\n  go func() {\n    fmt.Println(v)\n  }()\n}' Note the analyzer only checks 'defer' and 'go' statements when they are the last statement in the loop body. Otherwise, the analysis might produce false detections.",
+                  "markdown": "Reports references to loop variables from within `func` literals in `defer` and `go` statements. Such variables might have unexpected values because they are not copied to `func` literals, and the `func` literals in `defer` and `go` are not executed immediately.\n\nFor more information about closures and goroutines, see [What happens\nwith closures running as goroutines? at golang.org](https://golang.org/doc/go_faq.html#closures_and_goroutines).\n\nExample:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      go func() {\n        fmt.Println(v) // output will likely be `c c c`, not `a b c`\n      }()\n    }\n\nAfter the quick-fix is applied:\n\n    for _, v := range []string{\"a\", \"b\", \"c\"} {\n      v := v // `v` is copied now\n      go func() {\n        fmt.Println(v)\n      }()\n    }\n\nNote the analyzer only checks `defer` and `go` statements when they are the last statement in the loop body.\nOtherwise, the analysis might produce false detections."
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Probable bugs",
+                      "index": 2,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
                 "id": "GoBuildTag",
                 "shortDescription": {
                   "text": "Malformed build tag"
@@ -3435,7 +3435,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3466,7 +3466,7 @@
                   {
                     "target": {
                       "id": "Go/Probable bugs",
-                      "index": 3,
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3521,37 +3521,6 @@
                 ]
               },
               {
-                "id": "JsonSchemaDeprecation",
-                "shortDescription": {
-                  "text": "Deprecated JSON property"
-                },
-                "fullDescription": {
-                  "text": "Reports a deprecated property in a JSON file. Note that deprecation mechanism is not defined in the JSON Schema specification yet, and this inspection uses a non-standard extension 'deprecationMessage'.",
-                  "markdown": "Reports a deprecated property in a JSON file.  \nNote that deprecation mechanism is not defined in the JSON Schema specification yet, and this inspection uses a non-standard extension 'deprecationMessage'."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "note",
-                  "parameters": {
-                    "ideaSeverity": "WEAK WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "JSON and JSON5",
-                      "index": 7,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "XmlDuplicatedId",
                 "shortDescription": {
                   "text": "Duplicate 'id' attribute"
@@ -3572,6 +3541,37 @@
                     "target": {
                       "id": "XML",
                       "index": 5,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "JsonSchemaDeprecation",
+                "shortDescription": {
+                  "text": "Deprecated JSON property"
+                },
+                "fullDescription": {
+                  "text": "Reports a deprecated property in a JSON file. Note that deprecation mechanism is not defined in the JSON Schema specification yet, and this inspection uses a non-standard extension 'deprecationMessage'.",
+                  "markdown": "Reports a deprecated property in a JSON file.  \nNote that deprecation mechanism is not defined in the JSON Schema specification yet, and this inspection uses a non-standard extension 'deprecationMessage'."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "note",
+                  "parameters": {
+                    "ideaSeverity": "WEAK WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "JSON and JSON5",
+                      "index": 7,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -4885,37 +4885,6 @@
                 ]
               },
               {
-                "id": "HtmlUnknownAnchorTarget",
-                "shortDescription": {
-                  "text": "Unresolved fragment in a link"
-                },
-                "fullDescription": {
-                  "text": "Reports an unresolved last part of an URL after the '#' sign.",
-                  "markdown": "Reports an unresolved last part of an URL after the `#` sign."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "HTML",
-                      "index": 10,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "UnusedDefine",
                 "shortDescription": {
                   "text": "Unused define"
@@ -4936,6 +4905,37 @@
                     "target": {
                       "id": "RELAX NG",
                       "index": 22,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "HtmlUnknownAnchorTarget",
+                "shortDescription": {
+                  "text": "Unresolved fragment in a link"
+                },
+                "fullDescription": {
+                  "text": "Reports an unresolved last part of an URL after the '#' sign.",
+                  "markdown": "Reports an unresolved last part of an URL after the `#` sign."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "HTML",
+                      "index": 10,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -5257,37 +5257,6 @@
                 ]
               },
               {
-                "id": "RegExpEscapedMetaCharacter",
-                "shortDescription": {
-                  "text": "Escaped meta character"
-                },
-                "fullDescription": {
-                  "text": "Reports escaped meta characters. Some RegExp coding styles specify that meta characters should be placed inside a character class, to make the regular expression easier to understand. This inspection does not warn about the meta character '[', ']' and '^', because those would need additional escaping inside a character class. Example: '\\d+\\.\\d+' After the quick-fix is applied: '\\d+[.]\\d+' New in 2017.1",
-                  "markdown": "Reports escaped meta characters. Some RegExp coding styles specify that meta characters should be placed inside a character class, to make the regular expression easier to understand. This inspection does not warn about the meta character `[`, `]` and `^`, because those would need additional escaping inside a character class.\n\n**Example:**\n\n\n      \\d+\\.\\d+\n\nAfter the quick-fix is applied:\n\n\n      \\d+[.]\\d+\n\nNew in 2017.1"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "note",
-                  "parameters": {
-                    "ideaSeverity": "INFORMATION"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "RegExp",
-                      "index": 8,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "LossyEncoding",
                 "shortDescription": {
                   "text": "Lossy encoding"
@@ -5308,6 +5277,37 @@
                     "target": {
                       "id": "Internationalization",
                       "index": 25,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "RegExpEscapedMetaCharacter",
+                "shortDescription": {
+                  "text": "Escaped meta character"
+                },
+                "fullDescription": {
+                  "text": "Reports escaped meta characters. Some RegExp coding styles specify that meta characters should be placed inside a character class, to make the regular expression easier to understand. This inspection does not warn about the meta character '[', ']' and '^', because those would need additional escaping inside a character class. Example: '\\d+\\.\\d+' After the quick-fix is applied: '\\d+[.]\\d+' New in 2017.1",
+                  "markdown": "Reports escaped meta characters. Some RegExp coding styles specify that meta characters should be placed inside a character class, to make the regular expression easier to understand. This inspection does not warn about the meta character `[`, `]` and `^`, because those would need additional escaping inside a character class.\n\n**Example:**\n\n\n      \\d+\\.\\d+\n\nAfter the quick-fix is applied:\n\n\n      \\d+[.]\\d+\n\nNew in 2017.1"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "note",
+                  "parameters": {
+                    "ideaSeverity": "INFORMATION"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "RegExp",
+                      "index": 8,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -7097,7 +7097,7 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "ssh://git@github.com/veteran-software/nowlive-logging.git",
-          "revisionId": "0e1c106c293da3f984110b195bd268a5c8bc7dca",
+          "revisionId": "3a16d158dcd38639d6a7c09ed215030bc0750715",
           "branch": "refs/heads/main",
           "properties": {
             "repoUrl": "https://github.com/veteran-software/nowlive-logging",
@@ -7110,9 +7110,9 @@
       "results": [],
       "automationDetails": {
         "id": "project/qodana/2023-04-03",
-        "guid": "c0a5240e-ac0b-4d06-9859-a613df78fe35",
+        "guid": "1c98722a-ee35-4870-a650-876566145db1",
         "properties": {
-          "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4601822997"
+          "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4602003074"
         }
       },
       "newlineSequences": [

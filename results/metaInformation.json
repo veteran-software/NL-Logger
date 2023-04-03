@@ -8,12 +8,12 @@
     "vcs": {
       "sarifIdea": {
         "repositoryUri": "ssh://git@github.com/veteran-software/nowlive-logging.git",
-        "revisionId": "0e1c106c293da3f984110b195bd268a5c8bc7dca",
+        "revisionId": "3a16d158dcd38639d6a7c09ed215030bc0750715",
         "branch": "refs/heads/main"
       }
     },
     "deviceId": "200820300000000-6020-707b-7d2c-e4824c0e26f8",
-    "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4601822997",
+    "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4602003074",
     "repoUrl": "https://github.com/veteran-software/nowlive-logging"
   }
 }
