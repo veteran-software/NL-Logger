@@ -38,7 +38,7 @@ const (
 
 var (
 	log = logrus.Logger{
-		Out: os.Stdout,
+		Out: os.Stderr,
 		Formatter: &easy.Formatter{
 			TimestampFormat: "2006-01-02 15:04:05",
 			LogFormat:       "[%lvl%]: %msg%\n",
@@ -68,7 +68,7 @@ func SetLevel(level logrus.Level) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Traceln(args ...any) {
-	if log.Level == logrus.TraceLevel {
+	if log.IsLevelEnabled(TraceLevel) {
 		log.Traceln(args...)
 	}
 }
@@ -77,7 +77,7 @@ func Traceln(args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Tracef(format string, args ...any) {
-	if log.Level == logrus.TraceLevel {
+	if log.IsLevelEnabled(TraceLevel) {
 		log.Tracef(format, args...)
 	}
 }
@@ -86,7 +86,7 @@ func Tracef(format string, args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Trace(args ...any) {
-	if log.Level == logrus.TraceLevel {
+	if log.IsLevelEnabled(TraceLevel) {
 		log.Trace(args...)
 	}
 }
@@ -95,7 +95,7 @@ func Trace(args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Debugln(args ...any) {
-	if log.Level <= logrus.DebugLevel {
+	if log.IsLevelEnabled(DebugLevel) {
 		log.Debugln(args...)
 	}
 }
@@ -104,7 +104,7 @@ func Debugln(args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Debugf(format string, args ...any) {
-	if log.Level <= logrus.DebugLevel {
+	if log.IsLevelEnabled(DebugLevel) {
 		log.Debugf(format, args...)
 	}
 }
@@ -113,7 +113,7 @@ func Debugf(format string, args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Infoln(args ...any) {
-	if log.Level <= logrus.InfoLevel {
+	if log.IsLevelEnabled(InfoLevel) {
 		log.Infoln(args...)
 	}
 }
@@ -122,7 +122,7 @@ func Infoln(args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Infof(format string, args ...any) {
-	if log.Level <= logrus.InfoLevel {
+	if log.IsLevelEnabled(InfoLevel) {
 		log.Infof(format, args...)
 	}
 }
@@ -131,7 +131,7 @@ func Infof(format string, args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Warnln(args ...any) {
-	if log.Level <= logrus.WarnLevel {
+	if log.IsLevelEnabled(WarnLevel) {
 		log.Warningln(args...)
 	}
 }
@@ -140,7 +140,7 @@ func Warnln(args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Warnf(format string, args ...any) {
-	if log.Level == logrus.WarnLevel {
+	if log.IsLevelEnabled(WarnLevel) {
 		log.Warnf(format, args...)
 	}
 }
@@ -149,7 +149,7 @@ func Warnf(format string, args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Errorln(args ...any) {
-	if log.Level <= logrus.ErrorLevel {
+	if log.IsLevelEnabled(ErrorLevel) {
 		log.Errorln(args...)
 	}
 }
@@ -158,7 +158,7 @@ func Errorln(args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Errorf(format string, args ...any) {
-	if log.Level == logrus.ErrorLevel {
+	if log.IsLevelEnabled(ErrorLevel) {
 		log.Errorf(format, args...)
 	}
 }
@@ -167,7 +167,7 @@ func Errorf(format string, args ...any) {
 //
 //goland:noinspection GoUnusedExportedFunction
 func Fatalln(args ...any) {
-	if log.Level <= logrus.FatalLevel {
+	if log.IsLevelEnabled(FatalLevel) {
 		log.Fatalln(args...)
 	}
 }
