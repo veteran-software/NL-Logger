@@ -7,7 +7,7 @@
         "driver": {
           "name": "QDGO",
           "fullName": "Qodana for Go",
-          "version": "223.8788.112",
+          "version": "223.8914.164",
           "rules": [],
           "taxa": [
             {
@@ -301,7 +301,7 @@
         "extensions": [
           {
             "name": "org.editorconfig.editorconfigjetbrains",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "EditorConfigCharClassRedundancy",
@@ -1181,7 +1181,7 @@
           },
           {
             "name": "org.jetbrains.plugins.go",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "GoUnnecessarilyExportedIdentifiers",
@@ -2176,6 +2176,37 @@
                 ]
               },
               {
+                "id": "GoPrintFunctions",
+                "shortDescription": {
+                  "text": "Incorrect usage of 'fmt.Printf' and 'fmt.Println' functions"
+                },
+                "fullDescription": {
+                  "text": "Reports incorrect usages of 'fmt.Printf', 'fmt.Println', and similar formatting and printing functions. In their format strings, formatting functions use formatting verbs, like '%s', '%d', '%v', and others. If formatting verbs are used incorrectly, the result of a formatting function will contain an error. For more information about formatting verbs, see Package fmt at golang.org. Example: 'fmt.Printf(\"id: %s\", 42)' The output of this function is 'id: %!s(int=42)'. It might be not what you really want. The following function uses the '%d' formatting verb. The output with the '%d' formatting verb will be 'id: 42'. 'fmt.Printf(\"id: %d\", 42)'",
+                  "markdown": "Reports incorrect usages of `fmt.Printf`, `fmt.Println`, and similar formatting and printing functions.\n\nIn their format strings, formatting functions use formatting verbs, like `%s`, `%d`, `%v`, and others.\nIf formatting verbs are used incorrectly, the result of a formatting function will contain an error.\nFor more information about formatting verbs, see [Package fmt at golang.org](https://golang.org/pkg/fmt/).\n\nExample:\n\n    fmt.Printf(\"id: %s\", 42)\n\nThe output of this function is `id: %!s(int=42)`. It might be not what you really want.\nThe following function uses the `%d` formatting verb.\nThe output with the `%d` formatting verb will be `id: 42`.\n\n    fmt.Printf(\"id: %d\", 42)\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "note",
+                  "parameters": {
+                    "ideaSeverity": "WEAK WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Probable bugs",
+                      "index": 3,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
                 "id": "GoDeferInLoop",
                 "shortDescription": {
                   "text": "'defer' in the loop"
@@ -2207,13 +2238,13 @@
                 ]
               },
               {
-                "id": "GoPrintFunctions",
+                "id": "GoDeferGo",
                 "shortDescription": {
-                  "text": "Incorrect usage of 'fmt.Printf' and 'fmt.Println' functions"
+                  "text": "Defer/go statement calls 'recover' or 'panic' directly"
                 },
                 "fullDescription": {
-                  "text": "Reports incorrect usages of 'fmt.Printf', 'fmt.Println', and similar formatting and printing functions. In their format strings, formatting functions use formatting verbs, like '%s', '%d', '%v', and others. If formatting verbs are used incorrectly, the result of a formatting function will contain an error. For more information about formatting verbs, see Package fmt at golang.org. Example: 'fmt.Printf(\"id: %s\", 42)' The output of this function is 'id: %!s(int=42)'. It might be not what you really want. The following function uses the '%d' formatting verb. The output with the '%d' formatting verb will be 'id: 42'. 'fmt.Printf(\"id: %d\", 42)'",
-                  "markdown": "Reports incorrect usages of `fmt.Printf`, `fmt.Println`, and similar formatting and printing functions.\n\nIn their format strings, formatting functions use formatting verbs, like `%s`, `%d`, `%v`, and others.\nIf formatting verbs are used incorrectly, the result of a formatting function will contain an error.\nFor more information about formatting verbs, see [Package fmt at golang.org](https://golang.org/pkg/fmt/).\n\nExample:\n\n    fmt.Printf(\"id: %s\", 42)\n\nThe output of this function is `id: %!s(int=42)`. It might be not what you really want.\nThe following function uses the `%d` formatting verb.\nThe output with the `%d` formatting verb will be `id: 42`.\n\n    fmt.Printf(\"id: %d\", 42)\n"
+                  "text": "Reports 'defer' and 'go' statements that call 'panic()' or 'recover()' directly. Such statements are rarely useful and might indicate a misuse of the 'panic()' and 'recover()' mechanism. In particular: 'go panic()': a newly-started goroutine will panic immediately. 'defer panic()': a function with this statement will always panic on exit. 'go recover()': has no effect as newly-started goroutine cannot panic. 'defer recover()': function with this statement will silently stop panicking. This could be a valid usage, but an idiomatic way is to inspect the value returned by 'recover()': 'defer func() {\n  if r := recover(); r != nil {\n    fmt.Println(\"Recovered from: \", r)\n  }\n}()' For more information about go statements and panics handling, see Handling panics and Go statements in the Go Language Specification.",
+                  "markdown": "Reports `defer` and `go` statements that call `panic()` or `recover()` directly.\n\nSuch statements are rarely useful and might indicate a misuse of the `panic()` and `recover()` mechanism.\nIn particular:\n\n* `go panic()`: a newly-started goroutine will panic immediately.\n* `defer panic()`: a function with this statement will always panic on exit.\n* `go recover()`: has no effect as newly-started goroutine cannot panic.\n* `defer recover()`: function with this statement will silently stop panicking. This could be a valid usage, but an idiomatic way is to inspect the value returned by `recover()`:\n\n      defer func() {\n        if r := recover(); r != nil {\n          fmt.Println(\"Recovered from: \", r)\n        }\n      }()\n\nFor more information about go statements and panics handling, see [Handling\npanics](https://golang.org/ref/spec#Handling_panics) and\n[Go statements](https://golang.org/ref/spec#Go_statements) in the Go Language Specification."
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -2251,37 +2282,6 @@
                   "level": "warning",
                   "parameters": {
                     "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "GoDeferGo",
-                "shortDescription": {
-                  "text": "Defer/go statement calls 'recover' or 'panic' directly"
-                },
-                "fullDescription": {
-                  "text": "Reports 'defer' and 'go' statements that call 'panic()' or 'recover()' directly. Such statements are rarely useful and might indicate a misuse of the 'panic()' and 'recover()' mechanism. In particular: 'go panic()': a newly-started goroutine will panic immediately. 'defer panic()': a function with this statement will always panic on exit. 'go recover()': has no effect as newly-started goroutine cannot panic. 'defer recover()': function with this statement will silently stop panicking. This could be a valid usage, but an idiomatic way is to inspect the value returned by 'recover()': 'defer func() {\n  if r := recover(); r != nil {\n    fmt.Println(\"Recovered from: \", r)\n  }\n}()' For more information about go statements and panics handling, see Handling panics and Go statements in the Go Language Specification.",
-                  "markdown": "Reports `defer` and `go` statements that call `panic()` or `recover()` directly.\n\nSuch statements are rarely useful and might indicate a misuse of the `panic()` and `recover()` mechanism.\nIn particular:\n\n* `go panic()`: a newly-started goroutine will panic immediately.\n* `defer panic()`: a function with this statement will always panic on exit.\n* `go recover()`: has no effect as newly-started goroutine cannot panic.\n* `defer recover()`: function with this statement will silently stop panicking. This could be a valid usage, but an idiomatic way is to inspect the value returned by `recover()`:\n\n      defer func() {\n        if r := recover(); r != nil {\n          fmt.Println(\"Recovered from: \", r)\n        }\n      }()\n\nFor more information about go statements and panics handling, see [Handling\npanics](https://golang.org/ref/spec#Handling_panics) and\n[Go statements](https://golang.org/ref/spec#Go_statements) in the Go Language Specification."
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "note",
-                  "parameters": {
-                    "ideaSeverity": "WEAK WARNING"
                   }
                 },
                 "relationships": [
@@ -2641,37 +2641,6 @@
                 ]
               },
               {
-                "id": "GoRedundantBlankArgInRange",
-                "shortDescription": {
-                  "text": "Redundant blank argument in range"
-                },
-                "fullDescription": {
-                  "text": "Reports optional blank variables in range loops. When you use the 'range' loop to iterate over a slice, two values are returned for each iteration. The first is the index number, and the second is a copy of the element at that index. If you do not need the second value, you can skip this element instead of using a blank identifier. Example: 'for a, _ = range v {} // `for a, _ =` is the same as `for a =`' To remove the blank identifier, you can use the Delete blank argument quick-fix. After the quick-fix is applied, the code will look as follows: 'for a = range v {}'",
-                  "markdown": "Reports optional blank variables in range loops.\n\nWhen you use the `range` loop to iterate over a slice, two values are returned for each iteration. The first is the index\nnumber, and the second is a copy of the element at that index. If you do not need the second value, you can skip this element instead of\nusing a blank identifier.\n\nExample:\n\n    for a, _ = range v {} // `for a, _ =` is the same as `for a =`\n\nTo remove the blank identifier, you can use the **Delete blank argument** quick-fix. After the quick-fix is applied, the code will\nlook as follows:\n\n    for a = range v {}\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Declaration redundancy",
-                      "index": 4,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoCommentStart",
                 "shortDescription": {
                   "text": "Comment of exported element starts with the incorrect name"
@@ -2703,13 +2672,13 @@
                 ]
               },
               {
-                "id": "GoUnusedConst",
+                "id": "GoRedundantBlankArgInRange",
                 "shortDescription": {
-                  "text": "Unused constant"
+                  "text": "Redundant blank argument in range"
                 },
                 "fullDescription": {
-                  "text": "Reports constants that are defined but are never used in code. 'func main() {\n const i = 100\n}' Unlike unused variables and imports, this code will compile. Unused constants might increase your code base and slow down program compilation. To delete the unused constant, consider using the Delete constant quick-fix.",
-                  "markdown": "Reports constants that are defined but are never used in code.\n\n    func main() {\n     const i = 100\n    }\n\nUnlike unused variables and imports, this code will compile. Unused constants might increase your code base and\nslow down program compilation. To delete the unused constant, consider using the **Delete constant** quick-fix."
+                  "text": "Reports optional blank variables in range loops. When you use the 'range' loop to iterate over a slice, two values are returned for each iteration. The first is the index number, and the second is a copy of the element at that index. If you do not need the second value, you can skip this element instead of using a blank identifier. Example: 'for a, _ = range v {} // `for a, _ =` is the same as `for a =`' To remove the blank identifier, you can use the Delete blank argument quick-fix. After the quick-fix is applied, the code will look as follows: 'for a = range v {}'",
+                  "markdown": "Reports optional blank variables in range loops.\n\nWhen you use the `range` loop to iterate over a slice, two values are returned for each iteration. The first is the index\nnumber, and the second is a copy of the element at that index. If you do not need the second value, you can skip this element instead of\nusing a blank identifier.\n\nExample:\n\n    for a, _ = range v {} // `for a, _ =` is the same as `for a =`\n\nTo remove the blank identifier, you can use the **Delete blank argument** quick-fix. After the quick-fix is applied, the code will\nlook as follows:\n\n    for a = range v {}\n"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -2765,26 +2734,26 @@
                 ]
               },
               {
-                "id": "GoMissingTrailingComma",
+                "id": "GoUnusedConst",
                 "shortDescription": {
-                  "text": "Missing trailing comma before a newline in a composite literal"
+                  "text": "Unused constant"
                 },
                 "fullDescription": {
-                  "text": "Reports a missing trailing comma before a newline in composite literals, function call arguments, and function parameter lists. Example: 'func f(f int) (\n int,\n bool   // missing a trailing comma\n){\n println(1, 2  // missing a trailing comma\n )\n}'",
-                  "markdown": "Reports a missing trailing comma before a newline in composite literals, function call arguments, and function parameter lists.\n\nExample:\n\n    func f(f int) (\n     int,\n     bool   // missing a trailing comma\n    ){\n     println(1, 2  // missing a trailing comma\n     )\n    }\n"
+                  "text": "Reports constants that are defined but are never used in code. 'func main() {\n const i = 100\n}' Unlike unused variables and imports, this code will compile. Unused constants might increase your code base and slow down program compilation. To delete the unused constant, consider using the Delete constant quick-fix.",
+                  "markdown": "Reports constants that are defined but are never used in code.\n\n    func main() {\n     const i = 100\n    }\n\nUnlike unused variables and imports, this code will compile. Unused constants might increase your code base and\nslow down program compilation. To delete the unused constant, consider using the **Delete constant** quick-fix."
                 },
                 "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
+                  "enabled": true,
+                  "level": "warning",
                   "parameters": {
-                    "ideaSeverity": "ERROR"
+                    "ideaSeverity": "WARNING"
                   }
                 },
                 "relationships": [
                   {
                     "target": {
-                      "id": "Go/General",
-                      "index": 2,
+                      "id": "Go/Declaration redundancy",
+                      "index": 4,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2816,6 +2785,37 @@
                     "target": {
                       "id": "Go/Declaration redundancy",
                       "index": 4,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoMissingTrailingComma",
+                "shortDescription": {
+                  "text": "Missing trailing comma before a newline in a composite literal"
+                },
+                "fullDescription": {
+                  "text": "Reports a missing trailing comma before a newline in composite literals, function call arguments, and function parameter lists. Example: 'func f(f int) (\n int,\n bool   // missing a trailing comma\n){\n println(1, 2  // missing a trailing comma\n )\n}'",
+                  "markdown": "Reports a missing trailing comma before a newline in composite literals, function call arguments, and function parameter lists.\n\nExample:\n\n    func f(f int) (\n     int,\n     bool   // missing a trailing comma\n    ){\n     println(1, 2  // missing a trailing comma\n     )\n    }\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "ideaSeverity": "ERROR"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/General",
+                      "index": 2,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -2889,37 +2889,6 @@
                 ]
               },
               {
-                "id": "GoStringsReplaceCount",
-                "shortDescription": {
-                  "text": "Incorrect 'strings.Replace' count argument"
-                },
-                "fullDescription": {
-                  "text": "Reports 'strings.Replace' calls with the replace count '0' instead of '-1'. The count argument for how many times a string should be replaced should not be '0' as it will not replace anything and make the function call redundant. Use '-1' instead. Example: 'a := strings.Replace(\"SSS\", \"S\", \"H\", 0) // replaces nothing\nb := strings.Replace(\"SSS\", \"S\", \"H\", -1) // replaces all S occurrences with H'",
-                  "markdown": "Reports `strings.Replace` calls with the replace count `0` instead of `-1`.\n\nThe count argument for how many times a string should be replaced should not be `0`\nas it will not replace anything and make the function call redundant. Use `-1` instead.\n\nExample:\n\n    a := strings.Replace(\"SSS\", \"S\", \"H\", 0) // replaces nothing\n    b := strings.Replace(\"SSS\", \"S\", \"H\", -1) // replaces all S occurrences with H\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": true,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "GoTypeParameterInLowerCase",
                 "shortDescription": {
                   "text": "Type parameter is declared in lowercase"
@@ -2940,6 +2909,37 @@
                     "target": {
                       "id": "Go/Code style issues",
                       "index": 16,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "GoStringsReplaceCount",
+                "shortDescription": {
+                  "text": "Incorrect 'strings.Replace' count argument"
+                },
+                "fullDescription": {
+                  "text": "Reports 'strings.Replace' calls with the replace count '0' instead of '-1'. The count argument for how many times a string should be replaced should not be '0' as it will not replace anything and make the function call redundant. Use '-1' instead. Example: 'a := strings.Replace(\"SSS\", \"S\", \"H\", 0) // replaces nothing\nb := strings.Replace(\"SSS\", \"S\", \"H\", -1) // replaces all S occurrences with H'",
+                  "markdown": "Reports `strings.Replace` calls with the replace count `0` instead of `-1`.\n\nThe count argument for how many times a string should be replaced should not be `0`\nas it will not replace anything and make the function call redundant. Use `-1` instead.\n\nExample:\n\n    a := strings.Replace(\"SSS\", \"S\", \"H\", 0) // replaces nothing\n    b := strings.Replace(\"SSS\", \"S\", \"H\", -1) // replaces all S occurrences with H\n"
+                },
+                "defaultConfiguration": {
+                  "enabled": true,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Go/Probable bugs",
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3323,26 +3323,26 @@
                 ]
               },
               {
-                "id": "GoAssignmentToReceiver",
+                "id": "GoVetAtomic",
                 "shortDescription": {
-                  "text": "Assignment to a receiver"
+                  "text": "Incorrect usage of the 'sync/atomic' package"
                 },
                 "fullDescription": {
-                  "text": "Reports assignments to method receivers. When you assign a value to the method receiver, the value will not be reflected outside of the method itself. Values will be reflected in subsequent calls from the same method. Example: 'package main\n\nimport \"fmt\"\n\ntype demo struct {\n Val int\n}\n\nfunc (d *demo) change() {\n d = nil // Assignment to the method receiver propagates only to callees but not to callers\n d.myVal()\n}\n\nfunc (d *demo) myVal() {\n fmt.Printf(\"my val: %#v\\n\", d)\n}\n\nfunc (d demo) change2() {\n d = demo{} // Assignment to the method receiver doesn't propagate to other calls\n d.myVal()\n}\n\nfunc (d *demo) change3() {\n d.Val = 3\n d.myVal()\n}\n\nfunc main() {\n d := &demo{}\n d.myVal()\n d.change()\n d.myVal()\n d.Val = 2\n d.change2()\n d.myVal()\n d.change3()\n d.myVal()\n}'",
-                  "markdown": "Reports assignments to method receivers.\n\nWhen you assign a value to the method receiver, the value will not be reflected outside of the method itself.\nValues will be reflected in subsequent calls from the same method.\n\nExample:\n\n    package main\n\n    import \"fmt\"\n\n    type demo struct {\n     Val int\n    }\n\n    func (d *demo) change() {\n     d = nil // Assignment to the method receiver propagates only to callees but not to callers\n     d.myVal()\n    }\n\n    func (d *demo) myVal() {\n     fmt.Printf(\"my val: %#v\\n\", d)\n    }\n\n    func (d demo) change2() {\n     d = demo{} // Assignment to the method receiver doesn't propagate to other calls\n     d.myVal()\n    }\n\n    func (d *demo) change3() {\n     d.Val = 3\n     d.myVal()\n    }\n\n    func main() {\n     d := &demo{}\n     d.myVal()\n     d.change()\n     d.myVal()\n     d.Val = 2\n     d.change2()\n     d.myVal()\n     d.change3()\n     d.myVal()\n    }\n"
+                  "text": "Reports assignment statements of the form 'x = atomic.AddUint64(&x, 1)'. Such operations are not atomic, and is a common misuse of the 'sync/atomic' API. To make them atomic, one need to remove the assignment to use a direct call: 'atomic.AddUint64(&x, 1)'. In that case, the value of 'x' will be updated atomically by address. Example: 'import (\n \"sync/atomic\"\n)\n\ntype Counter uint64\n\nfunc AtomicTests() {\n x := uint64(1)\n x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n}'",
+                  "markdown": "Reports assignment statements of the form `x = atomic.AddUint64(&x, 1)`.\n\nSuch operations are not atomic,\nand is a common misuse of the `sync/atomic` API. To make them atomic, one need to remove the assignment\nto use a direct call: `atomic.AddUint64(&x, 1)`. In that case, the value of `x` will be updated\natomically by address.\n\nExample:\n\n    import (\n     \"sync/atomic\"\n    )\n\n    type Counter uint64\n\n    func AtomicTests() {\n     x := uint64(1)\n     x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n     _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n     x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n    }\n"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
-                  "level": "note",
+                  "level": "warning",
                   "parameters": {
-                    "ideaSeverity": "WEAK WARNING"
+                    "ideaSeverity": "WARNING"
                   }
                 },
                 "relationships": [
                   {
                     "target": {
-                      "id": "Go/Control flow issues",
-                      "index": 23,
+                      "id": "Go/Probable bugs",
+                      "index": 3,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3385,26 +3385,26 @@
                 ]
               },
               {
-                "id": "GoVetAtomic",
+                "id": "GoAssignmentToReceiver",
                 "shortDescription": {
-                  "text": "Incorrect usage of the 'sync/atomic' package"
+                  "text": "Assignment to a receiver"
                 },
                 "fullDescription": {
-                  "text": "Reports assignment statements of the form 'x = atomic.AddUint64(&x, 1)'. Such operations are not atomic, and is a common misuse of the 'sync/atomic' API. To make them atomic, one need to remove the assignment to use a direct call: 'atomic.AddUint64(&x, 1)'. In that case, the value of 'x' will be updated atomically by address. Example: 'import (\n \"sync/atomic\"\n)\n\ntype Counter uint64\n\nfunc AtomicTests() {\n x := uint64(1)\n x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n}'",
-                  "markdown": "Reports assignment statements of the form `x = atomic.AddUint64(&x, 1)`.\n\nSuch operations are not atomic,\nand is a common misuse of the `sync/atomic` API. To make them atomic, one need to remove the assignment\nto use a direct call: `atomic.AddUint64(&x, 1)`. In that case, the value of `x` will be updated\natomically by address.\n\nExample:\n\n    import (\n     \"sync/atomic\"\n    )\n\n    type Counter uint64\n\n    func AtomicTests() {\n     x := uint64(1)\n     x = atomic.AddUint64(&x, 1)         // ERROR \"direct assignment to atomic value\"\n     _, x = 10, atomic.AddUint64(&x, 1)  // ERROR \"direct assignment to atomic value\"\n     x, _ = atomic.AddUint64(&x, 1), 10  // ERROR \"direct assignment to atomic value\"\n    }\n"
+                  "text": "Reports assignments to method receivers. When you assign a value to the method receiver, the value will not be reflected outside of the method itself. Values will be reflected in subsequent calls from the same method. Example: 'package main\n\nimport \"fmt\"\n\ntype demo struct {\n Val int\n}\n\nfunc (d *demo) change() {\n d = nil // Assignment to the method receiver propagates only to callees but not to callers\n d.myVal()\n}\n\nfunc (d *demo) myVal() {\n fmt.Printf(\"my val: %#v\\n\", d)\n}\n\nfunc (d demo) change2() {\n d = demo{} // Assignment to the method receiver doesn't propagate to other calls\n d.myVal()\n}\n\nfunc (d *demo) change3() {\n d.Val = 3\n d.myVal()\n}\n\nfunc main() {\n d := &demo{}\n d.myVal()\n d.change()\n d.myVal()\n d.Val = 2\n d.change2()\n d.myVal()\n d.change3()\n d.myVal()\n}'",
+                  "markdown": "Reports assignments to method receivers.\n\nWhen you assign a value to the method receiver, the value will not be reflected outside of the method itself.\nValues will be reflected in subsequent calls from the same method.\n\nExample:\n\n    package main\n\n    import \"fmt\"\n\n    type demo struct {\n     Val int\n    }\n\n    func (d *demo) change() {\n     d = nil // Assignment to the method receiver propagates only to callees but not to callers\n     d.myVal()\n    }\n\n    func (d *demo) myVal() {\n     fmt.Printf(\"my val: %#v\\n\", d)\n    }\n\n    func (d demo) change2() {\n     d = demo{} // Assignment to the method receiver doesn't propagate to other calls\n     d.myVal()\n    }\n\n    func (d *demo) change3() {\n     d.Val = 3\n     d.myVal()\n    }\n\n    func main() {\n     d := &demo{}\n     d.myVal()\n     d.change()\n     d.myVal()\n     d.Val = 2\n     d.change2()\n     d.myVal()\n     d.change3()\n     d.myVal()\n    }\n"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
-                  "level": "warning",
+                  "level": "note",
                   "parameters": {
-                    "ideaSeverity": "WARNING"
+                    "ideaSeverity": "WEAK WARNING"
                   }
                 },
                 "relationships": [
                   {
                     "target": {
-                      "id": "Go/Probable bugs",
-                      "index": 3,
+                      "id": "Go/Control flow issues",
+                      "index": 23,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3487,7 +3487,7 @@
           },
           {
             "name": "com.intellij",
-            "version": "223.8788.112",
+            "version": "223.8914.164",
             "rules": [
               {
                 "id": "XmlHighlighting",
@@ -3497,37 +3497,6 @@
                 "fullDescription": {
                   "text": "Reports XML validation problems in the results of a batch code inspection.",
                   "markdown": "Reports XML validation problems in the results of a batch code inspection."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "ideaSeverity": "ERROR"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "XML",
-                      "index": 5,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
-                "id": "XmlDuplicatedId",
-                "shortDescription": {
-                  "text": "Duplicate 'id' attribute"
-                },
-                "fullDescription": {
-                  "text": "Reports a duplicate 'id' attribute in XML.",
-                  "markdown": "Reports a duplicate `id` attribute in XML."
                 },
                 "defaultConfiguration": {
                   "enabled": false,
@@ -3572,6 +3541,37 @@
                     "target": {
                       "id": "JSON and JSON5",
                       "index": 7,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "XmlDuplicatedId",
+                "shortDescription": {
+                  "text": "Duplicate 'id' attribute"
+                },
+                "fullDescription": {
+                  "text": "Reports a duplicate 'id' attribute in XML.",
+                  "markdown": "Reports a duplicate `id` attribute in XML."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "error",
+                  "parameters": {
+                    "ideaSeverity": "ERROR"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "XML",
+                      "index": 5,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -3738,37 +3738,6 @@
                 ]
               },
               {
-                "id": "RequiredAttributes",
-                "shortDescription": {
-                  "text": "Missing required attribute"
-                },
-                "fullDescription": {
-                  "text": "Reports a missing mandatory attribute in an XML/HTML tag. Suggests configuring attributes that should not be reported.",
-                  "markdown": "Reports a missing mandatory attribute in an XML/HTML tag. Suggests configuring attributes that should not be reported."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "HTML",
-                      "index": 10,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "DuplicatedCode",
                 "shortDescription": {
                   "text": "Duplicated code fragment"
@@ -3789,6 +3758,37 @@
                     "target": {
                       "id": "General",
                       "index": 12,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "RequiredAttributes",
+                "shortDescription": {
+                  "text": "Missing required attribute"
+                },
+                "fullDescription": {
+                  "text": "Reports a missing mandatory attribute in an XML/HTML tag. Suggests configuring attributes that should not be reported.",
+                  "markdown": "Reports a missing mandatory attribute in an XML/HTML tag. Suggests configuring attributes that should not be reported."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "HTML",
+                      "index": 10,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -4823,37 +4823,6 @@
                 ]
               },
               {
-                "id": "HtmlExtraClosingTag",
-                "shortDescription": {
-                  "text": "Redundant closing tag"
-                },
-                "fullDescription": {
-                  "text": "Reports redundant closing tags on empty elements, for example, 'img' or 'br'. Example: '<html>\n    <body>\n      <br></br>\n    </body>\n  </html>' After the quick-fix is applied: '<html>\n    <body>\n      <br>\n    </body>\n  </html>'",
-                  "markdown": "Reports redundant closing tags on empty elements, for example, `img` or `br`.\n\n**Example:**\n\n\n      <html>\n        <body>\n          <br></br>\n        </body>\n      </html>\n\nAfter the quick-fix is applied:\n\n\n      <html>\n        <body>\n          <br>\n        </body>\n      </html>\n"
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "error",
-                  "parameters": {
-                    "ideaSeverity": "ERROR"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "HTML",
-                      "index": 10,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "RegExpOctalEscape",
                 "shortDescription": {
                   "text": "Octal escape"
@@ -4885,26 +4854,26 @@
                 ]
               },
               {
-                "id": "UnusedDefine",
+                "id": "HtmlExtraClosingTag",
                 "shortDescription": {
-                  "text": "Unused define"
+                  "text": "Redundant closing tag"
                 },
                 "fullDescription": {
-                  "text": "Reports an unused named pattern ('define') in a RELAX-NG file (XML or Compact Syntax). 'define' elements that are used through an include in another file are ignored.",
-                  "markdown": "Reports an unused named pattern (`define`) in a RELAX-NG file (XML or Compact Syntax). `define` elements that are used through an include in another file are ignored."
+                  "text": "Reports redundant closing tags on empty elements, for example, 'img' or 'br'. Example: '<html>\n    <body>\n      <br></br>\n    </body>\n  </html>' After the quick-fix is applied: '<html>\n    <body>\n      <br>\n    </body>\n  </html>'",
+                  "markdown": "Reports redundant closing tags on empty elements, for example, `img` or `br`.\n\n**Example:**\n\n\n      <html>\n        <body>\n          <br></br>\n        </body>\n      </html>\n\nAfter the quick-fix is applied:\n\n\n      <html>\n        <body>\n          <br>\n        </body>\n      </html>\n"
                 },
                 "defaultConfiguration": {
                   "enabled": false,
-                  "level": "warning",
+                  "level": "error",
                   "parameters": {
-                    "ideaSeverity": "WARNING"
+                    "ideaSeverity": "ERROR"
                   }
                 },
                 "relationships": [
                   {
                     "target": {
-                      "id": "RELAX NG",
-                      "index": 22,
+                      "id": "HTML",
+                      "index": 10,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -4936,6 +4905,37 @@
                     "target": {
                       "id": "HTML",
                       "index": 10,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "UnusedDefine",
+                "shortDescription": {
+                  "text": "Unused define"
+                },
+                "fullDescription": {
+                  "text": "Reports an unused named pattern ('define') in a RELAX-NG file (XML or Compact Syntax). 'define' elements that are used through an include in another file are ignored.",
+                  "markdown": "Reports an unused named pattern (`define`) in a RELAX-NG file (XML or Compact Syntax). `define` elements that are used through an include in another file are ignored."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "RELAX NG",
+                      "index": 22,
                       "toolComponent": {
                         "name": "QDGO"
                       }
@@ -5257,37 +5257,6 @@
                 ]
               },
               {
-                "id": "LossyEncoding",
-                "shortDescription": {
-                  "text": "Lossy encoding"
-                },
-                "fullDescription": {
-                  "text": "Reports characters that cannot be displayed because of the current document encoding. Examples: If you type international characters in a document with the US-ASCII charset, some characters will be lost on save. If you load a UTF-8-encoded file using the ISO-8859-1 one-byte charset, some characters will be displayed incorrectly. You can fix this by changing the file encoding either by specifying the encoding directly in the file, e.g. by editing 'encoding=' attribute in the XML prolog of XML file, or by changing the corresponding options in Settings | Editor | File Encodings.",
-                  "markdown": "Reports characters that cannot be displayed because of the current document encoding.\n\nExamples:\n\n* If you type international characters in a document with the **US-ASCII** charset, some characters will be lost on save.\n* If you load a **UTF-8** -encoded file using the **ISO-8859-1** one-byte charset, some characters will be displayed incorrectly.\n\nYou can fix this by changing the file encoding\neither by specifying the encoding directly in the file, e.g. by editing `encoding=` attribute in the XML prolog of XML file,\nor by changing the corresponding options in **Settings \\| Editor \\| File Encodings**."
-                },
-                "defaultConfiguration": {
-                  "enabled": false,
-                  "level": "warning",
-                  "parameters": {
-                    "ideaSeverity": "WARNING"
-                  }
-                },
-                "relationships": [
-                  {
-                    "target": {
-                      "id": "Internationalization",
-                      "index": 25,
-                      "toolComponent": {
-                        "name": "QDGO"
-                      }
-                    },
-                    "kinds": [
-                      "superset"
-                    ]
-                  }
-                ]
-              },
-              {
                 "id": "RegExpEscapedMetaCharacter",
                 "shortDescription": {
                   "text": "Escaped meta character"
@@ -5319,13 +5288,44 @@
                 ]
               },
               {
-                "id": "RegExpDuplicateAlternationBranch",
+                "id": "LossyEncoding",
                 "shortDescription": {
-                  "text": "Duplicate branch in alternation"
+                  "text": "Lossy encoding"
                 },
                 "fullDescription": {
-                  "text": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression. Example: '(alpha|bravo|charlie|alpha)' After the quick-fix is applied: '(alpha|bravo|charlie)' New in 2017.1",
-                  "markdown": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression.\n\n**Example:**\n\n\n      (alpha|bravo|charlie|alpha)\n\nAfter the quick-fix is applied:\n\n\n      (alpha|bravo|charlie)\n\nNew in 2017.1"
+                  "text": "Reports characters that cannot be displayed because of the current document encoding. Examples: If you type international characters in a document with the US-ASCII charset, some characters will be lost on save. If you load a UTF-8-encoded file using the ISO-8859-1 one-byte charset, some characters will be displayed incorrectly. You can fix this by changing the file encoding either by specifying the encoding directly in the file, e.g. by editing 'encoding=' attribute in the XML prolog of XML file, or by changing the corresponding options in Settings | Editor | File Encodings.",
+                  "markdown": "Reports characters that cannot be displayed because of the current document encoding.\n\nExamples:\n\n* If you type international characters in a document with the **US-ASCII** charset, some characters will be lost on save.\n* If you load a **UTF-8** -encoded file using the **ISO-8859-1** one-byte charset, some characters will be displayed incorrectly.\n\nYou can fix this by changing the file encoding\neither by specifying the encoding directly in the file, e.g. by editing `encoding=` attribute in the XML prolog of XML file,\nor by changing the corresponding options in **Settings \\| Editor \\| File Encodings**."
+                },
+                "defaultConfiguration": {
+                  "enabled": false,
+                  "level": "warning",
+                  "parameters": {
+                    "ideaSeverity": "WARNING"
+                  }
+                },
+                "relationships": [
+                  {
+                    "target": {
+                      "id": "Internationalization",
+                      "index": 25,
+                      "toolComponent": {
+                        "name": "QDGO"
+                      }
+                    },
+                    "kinds": [
+                      "superset"
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "RegExpRepeatedSpace",
+                "shortDescription": {
+                  "text": "Consecutive spaces"
+                },
+                "fullDescription": {
+                  "text": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier. Example: '(     )' After the quick-fix is applied: '( {5})' New in 2017.1",
+                  "markdown": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier.\n\n**Example:**\n\n\n      (     )\n\nAfter the quick-fix is applied:\n\n\n      ( {5})\n\n\nNew in 2017.1"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -5350,13 +5350,13 @@
                 ]
               },
               {
-                "id": "RegExpRepeatedSpace",
+                "id": "RegExpDuplicateAlternationBranch",
                 "shortDescription": {
-                  "text": "Consecutive spaces"
+                  "text": "Duplicate branch in alternation"
                 },
                 "fullDescription": {
-                  "text": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier. Example: '(     )' After the quick-fix is applied: '( {5})' New in 2017.1",
-                  "markdown": "Reports multiple consecutive spaces in a RegExp. Because spaces are not visible by default, it can be hard to see how many spaces are required. The RegExp can be made more clear by replacing the consecutive spaces with a single space and a counted quantifier.\n\n**Example:**\n\n\n      (     )\n\nAfter the quick-fix is applied:\n\n\n      ( {5})\n\n\nNew in 2017.1"
+                  "text": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression. Example: '(alpha|bravo|charlie|alpha)' After the quick-fix is applied: '(alpha|bravo|charlie)' New in 2017.1",
+                  "markdown": "Reports duplicate branches in a RegExp alternation. Duplicate branches slow down matching and obscure the intent of the expression.\n\n**Example:**\n\n\n      (alpha|bravo|charlie|alpha)\n\nAfter the quick-fix is applied:\n\n\n      (alpha|bravo|charlie)\n\nNew in 2017.1"
                 },
                 "defaultConfiguration": {
                   "enabled": true,
@@ -5514,7 +5514,7 @@
           },
           {
             "name": "org.jetbrains.plugins.yaml",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "YAMLRecursiveAlias",
@@ -5712,7 +5712,7 @@
           },
           {
             "name": "com.intellij.css",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "CssUnusedSymbol",
@@ -6499,7 +6499,7 @@
           },
           {
             "name": "HtmlTools",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "HtmlRequiredAltAttribute",
@@ -6852,7 +6852,7 @@
           },
           {
             "name": "org.intellij.intelliLang",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "InjectedReferences",
@@ -6895,7 +6895,7 @@
           },
           {
             "name": "org.jetbrains.plugins.go-template",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "GoTemplateUnknownVariable",
@@ -6969,7 +6969,7 @@
           },
           {
             "name": "tanvd.grazi",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "LanguageDetectionInspection",
@@ -7043,7 +7043,7 @@
           },
           {
             "name": "org.intellij.qodana",
-            "version": "223.8788",
+            "version": "223.8914",
             "rules": [
               {
                 "id": "QodanaServiceMessage",
@@ -7097,7 +7097,7 @@
       "versionControlProvenance": [
         {
           "repositoryUri": "ssh://git@github.com/veteran-software/nowlive-logging.git",
-          "revisionId": "71e1ca872700828adbbbdd1ac78755b4103448aa",
+          "revisionId": "0e1c106c293da3f984110b195bd268a5c8bc7dca",
           "branch": "refs/heads/main",
           "properties": {
             "repoUrl": "https://github.com/veteran-software/nowlive-logging",
@@ -7109,10 +7109,10 @@
       ],
       "results": [],
       "automationDetails": {
-        "id": "project/qodana/2023-03-11",
-        "guid": "507d8d1d-ce9a-4915-ad54-6ee3762f3398",
+        "id": "project/qodana/2023-04-03",
+        "guid": "c0a5240e-ac0b-4d06-9859-a613df78fe35",
         "properties": {
-          "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4393376338"
+          "jobUrl": "https://github.com/veteran-software/nowlive-logging/actions/runs/4601822997"
         }
       },
       "newlineSequences": [
