@@ -22,6 +22,7 @@ const (
 	YouTubePub  = "[YOUTUBE-P]"
 	DlYouTube   = "[DL-YT    ]"
 	DlTwitch    = "[DL-TWITCH]"
+	Stripe      = "[STRIPE   ]"
 )
 
 //goland:noinspection GoUnusedConst
@@ -37,7 +38,7 @@ const (
 
 var (
 	log = logrus.Logger{
-		Out: os.Stderr,
+		Out: os.Stdout,
 		Formatter: &easy.Formatter{
 			TimestampFormat: "2006-01-02 15:04:05",
 			LogFormat:       "[%lvl%]: %msg%\n",
@@ -54,6 +55,13 @@ func init() {
 	} else {
 		log.SetLevel(logrus.InfoLevel)
 	}
+}
+
+// SetLevel - Changes the log level programmatically
+//
+//goland:noinspection GoUnusedExportedFunction
+func SetLevel(level logrus.Level) {
+	logrus.SetLevel(level)
 }
 
 // Traceln - Logs the event at the TraceLevel on a new line
