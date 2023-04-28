@@ -23,6 +23,7 @@ const (
 	DlYouTube   = "[DL-YT    ]"
 	DlTwitch    = "[DL-TWITCH]"
 	Stripe      = "[STRIPE   ]"
+	Website     = "[WEBSITE  ]"
 )
 
 //goland:noinspection GoUnusedConst
