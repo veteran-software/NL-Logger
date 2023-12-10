@@ -62,7 +62,7 @@ func init() {
 //
 //goland:noinspection GoUnusedExportedFunction
 func SetLevel(level logrus.Level) {
-	logrus.SetLevel(level)
+	log.SetLevel(level)
 }
 
 // Traceln - Logs the event at the TraceLevel on a new line
