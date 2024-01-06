@@ -3,7 +3,9 @@ package logging
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"runtime"
+	"strings"
 
 	"github.com/sirupsen/logrus"
 	easy "github.com/t-tomalak/logrus-easy-formatter"
@@ -49,8 +51,10 @@ var (
 )
 
 func init() {
+	uname, _ := exec.Command("uname", "-a").Output()
+
 	//goland:noinspection GoBoolExpressions
-	if runtime.GOOS == "windows" {
+	if runtime.GOOS == "windows" || strings.Contains(string(uname), "WSL") || strings.Contains(string(uname), "wsl") {
 		log.SetLevel(logrus.DebugLevel)
 
 	} else {
